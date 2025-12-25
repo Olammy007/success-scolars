@@ -1,0 +1,704 @@
+<!DOCTYPE html>
+
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <title>AbdulGafar Awesome ICT Exam</title>
+
+<style>
+
+* {
+
+    margin: 0;
+
+    padding: 0;
+
+    font-family: 'Poppins',sans-seriff;
+
+    box-sizing: border-box;
+
+}
+
+body{
+
+    background: orange;
+
+}
+
+.app{
+
+    background: lightgreen;
+
+    width: 90%;
+
+    max-width: 600px;
+
+    margin: 100px auto 0;
+
+    border: 6px solid brown; 
+
+    border-radius: 10px;
+
+    padding: 30px;
+
+}
+
+.app h1{
+
+    font-weight: 25px;
+
+    color: #001e4d;
+
+    font-weight: 600;
+
+    border-bottom: 1px solid #333;
+
+    padding-bottom: 30px;
+
+    text-align: center;
+
+}
+
+.quiz{
+
+    padding: 20px 0;
+
+}
+
+.quiz h2{
+
+    font-size: 18px;
+
+    color: #001e4d;
+
+    font-weight: 600;
+
+}
+
+.btn{
+
+    background: #fff;
+
+    color: #222;
+
+    font-weight: 500;
+
+    width: 100%;
+
+    border: 1px solid #222;
+
+    padding: 10px;
+
+    margin: 10px 0;
+
+    text-align: left;
+
+    border-radius: 4px;
+
+    cursor: pointer;
+
+    transition: all 0.3s;
+
+}
+
+.btn:hover:not([disabled]){
+
+    background: #222;
+
+    color: #fff;
+
+}
+
+.btn:disabled{
+
+    cursor: no-drop;
+
+}
+
+#next-btn{
+
+    background: #001e4d;
+
+    color: #fff;
+
+    font-weight: 500;
+
+    width: 150px;
+
+    border: 0;
+
+    padding: 10px;
+
+    margin: 20px auto 0;
+
+    border-radius: 4px;
+
+    cursor: pointer;
+
+    display: none;
+
+}
+
+.correct{
+
+    background: #9aeabc;
+
+}
+
+.incorrect{
+
+    background: #ff9393;
+
+}
+
+.b{
+
+    display: flex;
+
+    background: #001e4d;
+
+    gap: 80px;
+
+    justify-content: center;
+
+    align-items: center;
+
+    align-content: center;
+
+}
+
+.b button{
+
+    background-color: purple;
+
+    color: white;
+
+}
+
+#st{
+
+    font: 0.7em sans-serif;
+
+    font-weight: bold;
+
+}
+
+#cl{
+
+    font: 0.7em sans-serif;
+
+    font-weight: bold;
+
+}
+
+</style>
+
+</head>
+
+<body>
+
+<div class="app">
+
+    <h1><img src="logo2.png" width="100" height="100" align="left">AbdulGafar TutorPoint Periodic CBT Evaluation</h1>
+
+<h3 align="center">
+
+<form >
+
+Name:<input type="text" id="st" name="uname"/>
+
+</form>
+
+Class:<input type="text" id="cl" class="uclass"/>
+
+<br/>
+
+<div class="container">
+
+<h5>Time Left<br> <span id="demo"></span></h5>
+
+<h5 align = "left">(<span id="number">0</span> of 10)</h5></div>
+
+</h3>
+
+    <div class="quiz">
+
+        <h2 id="question">Question goes here</h2>
+
+        <div id="answer-buttons">
+
+            <button class="btn">Answer 1</button>
+
+            <button class="btn">Answer 2</button>
+
+            <button class="btn">Answer 3</button>
+
+            <button class="btn">Answer 4</button>
+
+        </div>
+
+           <button id="next-btn">Next</button>
+
+   <div class="b">
+
+         <button hidden id="clear-btn" onclick="location.reload()">Reset</button>
+
+         <button hidden id="print-btn" onclick="window.print()">Print</button>
+
+   </div>
+
+<script>
+
+const questions = [
+{
+
+question: ". Travelling by air nowadays is an*essential evil*",
+
+answers: [
+
+    { text: "A.Metaphor", correct: false},
+
+    { text: "B.Oxymoron", correct: true},
+
+    { text: "C.Litotes", correct: false},
+
+]
+
+},
+
+{
+
+question: "Everyone should realize *life is but deferred death*.",
+
+answers: [
+
+    { text: "A.Simile", correct: false},
+
+    { text: "B.Hyperbole", correct: false},
+
+    { text: "C.Paradox", correct: true},
+
+]
+
+},
+
+
+
+{
+
+question:".*If you want to live long, drive very fast*",
+
+answers: [
+
+    { text: "A.Irony", correct: true},
+
+    { text: "B.Oxymoron", correct: false},
+
+    { text: "C.litotes", correct: false},
+
+]
+
+},
+
+{
+
+question: ".The Man often tells his wife that he has *an ocean of love for her*",
+
+answers: [
+
+    { text: "A. Oxymoron", correct: false},
+
+    { text: "B.Simile", correct: false},
+
+    { text: "C.Hyperbole", correct: true},
+
+]
+
+},
+
+
+
+{
+
+question: ". Desmond is a speaker of *no little ability*",
+
+answers: [
+
+    { text: "A.Oxymoron", correct: false},
+
+    { text: "B.Hyperbole", correct: false},
+
+    { text: "C.litotes", correct: true},
+
+]
+
+},
+
+{
+
+question: ".We have a *slim chance* of winning the game",
+
+answers: [
+
+    { text: "A.Simile", correct: false},
+
+    { text: "B.Metarphor", correct: true},
+
+    { text: "C.litotes", correct: false},
+
+]
+
+},
+
+{
+
+question: ".*The latest book of the author spoke* of his proficiency",
+
+answers: [
+
+    { text: "Metonymy", correct: false},
+
+    { text: "Personification", correct: true},
+
+    { text: "Synecdoche", correct: false},
+
+]
+
+},
+
+{
+
+question: "*How great is your mercy oh Lord?*.",
+
+answers: [
+
+    { text: "A.Rhetorical", correct: true},
+
+    { text: "B.Synecdoche", correct: false},
+
+    { text: "C.litotes", correct: false},
+
+]
+
+},
+
+{
+
+question: ". The host invited *so many queens of the night* to the party",
+
+answers: [
+
+    { text: "A.Metonymy", correct: false},
+
+    { text: "B.Euphemism", correct: true},
+
+    { text: "C.Oxymoron", correct: false},
+
+]
+
+},
+
+{
+
+question: ". Uneasy lies *the head* that wears a crown",
+
+answers: [
+
+    { text: "A.Litotes", correct: false},
+
+    { text: "B.Synecdoche", correct: true},
+
+    { text: "C.Metarphor", correct: false},
+
+]
+
+}
+
+    
+
+];
+
+
+
+const questionElement = document.getElementById("question");
+
+const answerButtons = document.getElementById("answer-buttons");
+
+const nextButton = document.getElementById("next-btn");
+
+const resetButton = document.getElementById("clear-btn");
+
+const st6 = document.getElementById("st");
+
+const cl6 = document.getElementById("cl");
+
+const printButton = document.getElementById("print-btn");
+
+const number = document.getElementById("number")
+
+let currentQuestionIndex = 0;
+
+let score = 0;
+
+
+
+function startQuiz(){
+
+    currentQuestionIndex = 0;
+
+    score = 0;
+
+    nextButton.innerHTML = "Next";
+
+    showQuestion();
+
+}
+
+
+
+// Set the date we're counting down to
+
+var countDownDate = new Date(Date.now() + (15 * 60 * 1000)).getTime();
+
+
+
+// Update the count down every 1 second
+
+var x = setInterval(function() {
+
+
+
+  // Get today's date and time
+
+  var now = new Date().getTime();
+
+    
+
+  // Find the distance between now and the count down date
+
+  var distance = countDownDate - now;
+
+    
+
+  // Time calculations for days, hours, minutes and seconds
+
+  var days = Math.floor(distance / (1000 * 60 * 60 * 24));
+
+  var hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+
+  var minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+
+  var seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+    
+
+  // Output the result in an element with id="demo"
+
+  document.getElementById("demo").innerHTML = hours + "0:"
+
+  + minutes + ":" + seconds + "";
+
+    
+
+  // If the count down is over, write some text 
+
+  if (distance < 0) {
+
+    clearInterval(x);
+
+    document.getElementById("demo").innerHTML = "EXPIRED";
+
+    showScore();
+
+
+
+  }
+
+}, 1000);
+
+
+
+function showQuestion(){
+
+    resetState();
+
+    let currentQuestion = questions[currentQuestionIndex];
+
+    let questionNo = currentQuestionIndex + 1;
+
+    
+
+    questionElement.innerHTML = questionNo + " " + currentQuestion.question;
+
+    number.innerHTML = questionNo + " ";
+
+    
+
+  
+
+    currentQuestion.answers.forEach(answer => {                            
+
+        const button = document.createElement("button");
+
+        button.innerHTML = answer.text;
+
+        button.classList.add("btn");
+
+        answerButtons.appendChild(button);
+
+        if(answer.correct){
+
+            button.dataset.correct = answer.correct;
+
+        }
+
+        button.addEventListener("click",selectAnswer);                     
+
+    });
+
+}
+
+
+
+
+
+function resetState(){
+
+    nextButton.style.display = "none";
+
+   while(answerButtons.firstChild){
+
+        answerButtons.removeChild(answerButtons.firstChild);    
+
+    } 
+
+}
+
+
+
+
+
+
+
+function selectAnswer(e){
+
+    const selectedBtn = e.target;
+
+    const isCorrect = selectedBtn.dataset.correct === "true";
+
+    if(isCorrect){
+
+        selectedBtn.classList.add("correct");
+
+        score++;
+
+    }else{
+
+        selectedBtn.classList.add("incorrect");
+
+    }
+
+    Array.from(answerButtons.children).forEach(button => {
+
+        if(button.dataset.correct=== "true"){
+
+            button.classList.add("correct");
+
+        }
+
+        button.disabled = true;
+
+    });
+
+    nextButton.style.display = "block";
+
+}
+//Save data to local storage
+function myfunc() {
+    //event.preventDefault();
+    st.value;
+    cl.value;
+    score;
+
+    
+
+    localStorage.setItem('Name6', st.value);
+    localStorage.setItem('Class6', cl.value);
+    localStorage.setItem('Score6', score);
+    alert('Your result has been stored in the archive');
+    window.location.href ="subject.html";
+}
+
+
+function showScore(){
+
+    resetState();
+
+    clearInterval(x);
+
+    questionElement.innerHTML = `Congratulations ${st.value}, you scored ${score} out of ${questions.length}!`;
+
+    nextButton.innerHTML = "Next Student";
+
+    resetButton.style.display = "block";
+
+    printButton.style.display = "block";
+
+
+
+
+
+}
+
+
+
+function handleNextButton(){
+
+    currentQuestionIndex++;
+
+    if(currentQuestionIndex < questions.length){
+
+        showQuestion()
+
+    }else{
+
+        showScore();
+
+    }
+
+}
+
+
+
+
+
+
+
+nextButton.addEventListener("click",()=>{
+
+    if(currentQuestionIndex < questions.length){
+
+        handleNextButton();
+
+    }else{
+
+        startQuiz();
+
+
+
+    }
+
+});
+
+startQuiz();
+
+</script>
+
+</p>
+
+</body>
+
+</html>

@@ -1,0 +1,1447 @@
+<!DOCTYPE html>
+
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <title>AbdulGafar Awesome ICT Exam</title>
+
+<style>
+
+* {
+
+    margin: 0;
+
+    padding: 0;
+
+    font-family: 'Poppins',sans-seriff;
+
+    box-sizing: border-box;
+
+}
+
+body{
+
+    background: indigo;
+
+}
+
+.app{
+
+    background: violet;
+
+    width: 90%;
+
+    max-width: 600px;
+
+    margin: 100px auto 0;
+
+    border: 6px solid brown; 
+
+    border-radius: 10px;
+
+    padding: 30px;
+
+}
+
+.app h1{
+
+    font-weight: 25px;
+
+    color: #001e4d;
+
+    font-weight: 600;
+
+    border-bottom: 1px solid #333;
+
+    padding-bottom: 30px;
+
+    text-align: center;
+
+}
+
+.quiz{
+
+    padding: 20px 0;
+
+}
+
+.quiz h2{
+
+    font-size: 18px;
+
+    color: #001e4d;
+
+    font-weight: 600;
+
+}
+
+.btn{
+
+    background: #fff;
+
+    color: #222;
+
+    font-weight: 500;
+
+    width: 100%;
+
+    border: 1px solid #222;
+
+    padding: 10px;
+
+    margin: 10px 0;
+
+    text-align: left;
+
+    border-radius: 4px;
+
+    cursor: pointer;
+
+    transition: all 0.3s;
+
+}
+
+.btn:hover:not([disabled]){
+
+    background: #222;
+
+    color: #fff;
+
+}
+
+.btn:disabled{
+
+    cursor: no-drop;
+
+}
+
+#next-btn{
+
+    background: #001e4d;
+
+    color: #fff;
+
+    font-weight: 500;
+
+    width: 150px;
+
+    border: 0;
+
+    padding: 10px;
+
+    margin: 20px auto 0;
+
+    border-radius: 4px;
+
+    cursor: pointer;
+
+    display: none;
+
+}
+
+.correct{
+
+    background: #9aeabc;
+
+}
+
+.incorrect{
+
+    background: #ff9393;
+
+}
+
+.b{
+
+    display: flex;
+
+    background: #001e4d;
+
+    gap: 80px;
+
+    justify-content: center;
+
+    align-items: center;
+
+    align-content: center;
+
+}
+
+.b button{
+
+    background-color: purple;
+
+    color: white;
+
+}
+
+#st{
+
+    font: 0.7em sans-serif;
+
+    font-weight: bold;
+
+}
+
+#cl{
+
+    font: 0.7em sans-serif;
+
+    font-weight: bold;
+
+}
+
+</style>
+
+</head>
+
+<body>
+
+<div class="app">
+
+    <h1><img src="logo2.png" width="100" height="100" align="left">AbdulGafar TutorPoint Periodic CBT Evaluation</h1>
+
+<h3 align="center">
+
+<form >
+
+Name:<input type="text" id="st" name="uname"/>
+
+</form>
+
+Class:<input type="text" id="cl" class="uclass"/>
+
+<br/>
+
+<div class="container">
+
+<h5>Time Left<br> <span id="demo"></span></h5>
+
+<h5 align = "left">(<span id="number">0</span> of 50)</h5></div>
+
+</h3>
+
+    <div class="quiz">
+
+        <h2 id="question">Question goes here</h2>
+
+        <div id="answer-buttons">
+
+            <button class="btn">Answer 1</button>
+
+            <button class="btn">Answer 2</button>
+
+            <button class="btn">Answer 3</button>
+
+            <button class="btn">Answer 4</button>
+
+        </div>
+
+           <button id="next-btn">Next</button>
+
+   <div class="b">
+
+         <button hidden id="clear-btn" onclick="location.reload()">Reset</button>
+
+         <button hidden id="print-btn" onclick="window.print()">Print</button>
+
+   </div>
+
+<script>
+
+const questions = [
+
+    {
+
+        question: ".Investors in business are mainly interested in the firm's ______.",
+
+        answers: [
+
+            { text: "A.Liquidity", correct: false},
+
+            { text: "B.Profitability", correct: true},
+
+            { text: "C.Management", correct: false},
+
+            { text: "D.Debt", correct: false},
+
+        ]
+
+    },
+    {
+
+question: ".A trial balanced is prepared to _____.",
+
+answers: [
+
+    { text: "A.Detect fraud", correct: false},
+
+    { text: "B.Test arithmetical accuracy of ledger account", correct: true},
+
+    { text: "C.Determine open capital", correct: false},
+
+    { text: "D.Ascertain losses in a trading account", correct: false},
+
+
+]
+
+},
+{
+
+question: ".Which of the following is recorded on the debit side of a trial balance?",
+
+answers: [
+
+    { text: "A.Capital", correct: false},
+
+    { text: "B.Bank overdraft", correct: false},
+
+    { text: "C.Purchase", correct: true},
+
+    { text: "D.Return outward", correct: false},
+
+
+]
+
+},
+{
+
+question: ".A trial balance is a list of _____ ",
+
+answers: [
+
+    { text: "A.Debtors and creditors", correct: false},
+
+    { text: "B.Current liabilities", correct: false},
+
+    { text: "C.Current assets", correct: false},
+
+    { text: "D.Debit and credit balances", correct: true},
+
+
+]
+
+},
+{
+
+question: ".Which of the following does NOT show in a trial balance?",
+
+answers: [
+
+    { text: "A.Open stock", correct: true},
+
+    { text: "B.Discount received", correct: false},
+
+    { text: "C.Discount allowed", correct: false},
+
+    { text: "D.Purchases", correct: false},
+
+
+]
+
+},
+{
+
+question: " The purpose of a trial balance in accounting is to test the arithmetic accuracy of the ____",
+
+answers: [
+
+    { text: "A.General journal", correct: false},
+
+    { text: "B.Ledger", correct: true},
+
+    { text: "C.Final account", correct: false},
+
+    { text: "D.Balance sheet", correct: false},
+
+
+]
+
+},
+{
+
+question: ".To correct an error, the purchase account was debited while the suspense account was credited. Which of the following was the cause of the error?.",
+
+answers: [
+
+    { text: "A.Original entry", correct: false},
+
+    { text: "B.Omission of creditor's balance", correct: false},
+
+    { text: "C.Over-casting of purchases", correct: false},
+
+    { text: "D.Undercasting of purchases", correct: true},
+
+
+]
+
+},
+{
+
+question: ".Which of the following errors does NOT affect the agrement of a trial balance?.",
+
+answers: [
+
+    { text: "A.Error of single entry", correct: false},
+
+    { text: "B.Error of undercast", correct: false},
+
+    { text: "C.Error of principle", correct: true},
+
+    { text: "D.Error of overcast", correct: false},
+
+
+]
+
+},
+{
+
+question: ".Which of the following errors would affect the agreement of a trial balance?",
+
+answers: [
+
+    { text: "A.Single entry", correct: true},
+
+    { text: "B.Omission", correct: false},
+
+    { text: "C.Commission", correct: false},
+
+    { text: "D.Principle", correct: false},
+
+
+]
+
+},
+{
+
+question: ".AbdulGafar Tutorpoint Ltd failed to record 20,000 wages. The error is that of ___",
+
+answers: [
+
+    { text: "A.Compensation", correct: false},
+
+    { text: "B.Omission", correct: true},
+
+    { text: "C.Commission", correct: false},
+
+    { text: "D.Principle", correct: false},
+
+
+]
+
+},
+{
+
+question: ".The purchase of a typewritter for office use is debited to purchase account. This is an error of______.",
+
+answers: [
+
+    { text: "A.Omission", correct: false},
+
+    { text: "B.Original Entry", correct: false},
+
+    { text: "C.Commission", correct: false},
+
+    { text: "D.Principle", correct: true},
+
+
+]
+
+},
+{
+
+question: ".A suspense account is used for errors of _____",
+
+answers: [
+
+    { text: "A.Double posting verified in the ledger ", correct: false},
+
+    { text: "B.Miscasting in the trial balance", correct: false},
+
+    { text: "C.Omission detected in the ledger", correct: false},
+
+    { text: "D.Items that have not yet been located for lack of sufficient data", correct: true},
+
+
+]
+
+},
+{
+
+question: ".Which of the following is NOT a cause of the disagreement between  the balances  of the cash book and the bank statement?",
+
+answers: [
+
+    { text: "A.Bank loan granted the customer", correct: true},
+
+    { text: "B.Standing order payments by the bank", correct: false},
+
+    { text: "C.Overstatement of the cash book", correct: false},
+
+    { text: "D.Error committed by the bank", correct: false},
+
+
+]
+
+},
+{
+
+question: ".A periodic information sent by the bank to the customer showing the financial position as at a given date is _____.",
+
+answers: [
+
+    { text: "A.Customer cheque book", correct: false},
+
+    { text: "B.Balance sheet", correct: false},
+
+    { text: "C.Bank reconciliation statement", correct: false},
+
+    { text: "D.Bank statement", correct: true},
+
+
+]
+
+},
+{
+
+question: ".A statement that is prepared to reconcile the disagreement  of the cash book and that of the bank statement is ___.",
+
+answers: [
+
+    { text: "A.Bank note", correct: false},
+
+    { text: "B.Bank reconciliation", correct: true},
+
+    { text: "C.Cash reconciliation", correct: false},
+
+    { text: "D.Bank charges", correct: false},
+
+
+]
+
+},
+{
+
+question: ".In the impress system of a petty cash book, a fixed amount  handed over to the petty cashier at the beginning of a period is called_____.",
+
+answers: [
+
+    { text: "A.Cash received", correct: false},
+
+    { text: "B.Cash spent", correct: false},
+
+    { text: "C.Cash float", correct: true},
+
+    { text: "D.Cash reimbursed", correct: false},
+
+
+]
+
+},
+{
+
+question: ".The bank column in the cash book shows a credit balance of N180. This means ___.",
+
+answers: [
+
+    { text: "A.Total payment of N180", correct: false},
+
+    { text: "B.Gross receipt of N180", correct: false},
+
+    { text: "C.Left over of N180 in the bank", correct: false},
+
+    { text: "D.Overdraft of N180", correct: true},
+
+
+]
+
+},
+{
+
+question: ".Which of the following is not a subsidiary book?.",
+
+answers: [
+
+    { text: "A.Cash book", correct: true},
+
+    { text: "B.Sales journal", correct: false},
+
+    { text: "C.Purchase ledger", correct: false},
+
+    { text: "D.General journal", correct: false},
+
+
+]
+
+},
+{
+
+question: ".Subsidiary books of account are used to record transactions _____.",
+
+answers: [
+
+    { text: "A.Made in the same period", correct: false},
+
+    { text: "B.Of a similar nature", correct: true},
+
+    { text: "C.Without source documents", correct: false},
+
+    { text: "D.Involving minor amount", correct: false},
+
+
+]
+
+},
+{
+
+question: ".A fixed amount of money set aside for petty expenses is called____.",
+
+answers: [
+
+    { text: "A.Imprest", correct: false},
+
+    { text: "B.Receipt", correct: false},
+
+    { text: "C.Fund", correct: false},
+
+    { text: "D.Float", correct: true},
+
+
+]
+
+},
+{
+
+question: ".One of the characteristics of useful accounting information is ______.",
+
+answers: [
+
+    { text: "A.Comparability", correct: true},
+
+    { text: "B.Profitability", correct: false},
+
+    { text: "C.Liquidity", correct: false},
+
+    { text: "D.Efficiency", correct: false},
+
+
+]
+
+},
+
+
+    {
+
+        question: "Errors in the ledger can only be corrected through the use of__.",
+
+        answers: [
+
+            { text: "A.Suspense account", correct: false},
+
+            { text: "B.Control account", correct: false},
+
+            { text: "C.General journal", correct: true},
+
+            { text: "D.Sales journal", correct: false},
+
+        ]
+
+    },
+
+   
+
+    {
+
+        question:".Books of accounts are opened by means of a ____",
+
+        answers: [
+
+            { text: "A.Journal proper", correct: false},
+
+            { text: "B.Principal journal", correct: true},
+
+            { text: "C.Invoice", correct: false},
+
+            { text: "D.Cash invoice", correct: false},
+
+        ]
+
+    },
+
+    {
+
+        question: ".Which of the following is used to record sales of fixed assets on credit?",
+
+        answers: [
+
+            { text: "A.Journal proper", correct: true},
+
+            { text: "B.Sales journal", correct: false},
+
+            { text: "C.Creditors account", correct: false},
+
+            { text: "D.Debtors account", correct: false},
+
+        ]
+
+    }, 
+    {
+
+question: ".Which of the following is both a subsidiary book and a ledger?",
+
+answers: [
+
+    { text: "A.Sales journal", correct: false},
+
+    { text: "B.Cash book", correct: true},
+
+    { text: "C.Journal proper", correct: false},
+
+    { text: "D.Purchase journal", correct: false},
+
+
+]
+
+},
+{
+
+question: ".The document sent to a customer before goods are delivered to him is_____.",
+
+answers: [
+
+    { text: "A.Credit note", correct: false},
+
+    { text: "B.Promisory note", correct: false},
+
+    { text: "C.Receipt", correct: false},
+
+    { text: "D.Proforma invoice", correct: true},
+
+
+]
+
+},
+{
+
+question: ".Damaged goods returned by a customer is usually accompanied by a ______.",
+
+answers: [
+
+    { text: "A.Debit note", correct: true},
+
+    { text: "B.Credit note", correct: false},
+
+    { text: "C.Promisory note", correct: false},
+
+    { text: "D.Bank note", correct: false},
+
+
+]
+
+},
+{
+
+question: ".When a buyer returns damaged goods to the seller, the buyer receives ______.",
+
+answers: [
+
+    { text: "A. Goods return invoice", correct: false},
+
+    { text: "B.Proforma Invoice", correct: false},
+
+    { text: "C.Debit note", correct: false},
+
+    { text: "D.Credit note", correct: true},
+
+
+]
+
+},
+{
+
+question: ".The accounting principle that is applied to check arbitrary actions on the part of accountants is ___.",
+
+answers: [
+
+    { text: "Objectivity.", correct: false},
+
+    { text: "B.Consistency", correct: true},
+
+    { text: "C.Materiality", correct: false},
+
+    { text: "D.Realization", correct: false},
+
+
+]
+
+},
+{
+
+question: ".Which of the following accounting conventions suggests that accountants should use a method of valuation that understates rather than overstate results?.",
+
+answers: [
+
+    { text: "A.Cost", correct: false},
+
+    { text: "B.Monetary", correct: false},
+
+    { text: "C.Historical", correct: false},
+
+    { text: "D.Conservatism", correct: true},
+
+
+]
+
+},
+{
+
+question: ".The accounting convention which states that the performance of a business should be determined by matching all expenses against all revenues is ___.",
+
+answers: [
+
+    { text: "A.Materiality", correct: false},
+
+    { text: "B.Periodicity", correct: false},
+
+    { text: "C.Accruals", correct: true},
+
+    { text: "D.Objectivity", correct: false},
+
+
+]
+
+},
+{
+
+question: ".The basis upon which assets of an organisation is valued is the _.",
+
+answers: [
+
+    { text: "A.Business entity concept", correct: false},
+
+    { text: "B.Realization concept", correct: false},
+
+    { text: "C.Historical concept", correct: true},
+
+    { text: "D.Dual aspect concept", correct: false},
+
+
+]
+
+},
+{
+
+question: ".The concept which states that the affairs of a business is to be treated as being seperate from the private activities of the owner is ______.",
+
+answers: [
+
+    { text: "A.Dual aspect concept", correct: false},
+
+    { text: "B.Cost concept", correct: false},
+
+    { text: "C.Realization concept", correct: false},
+
+    { text: "D.Business entity concept", correct: true},
+
+
+]
+
+},
+
+    {
+
+question: ".A credit note from a supplier for damaged goods would first be entered in the  ______.",
+
+answers: [
+
+    { text: "A.Sales day book", correct: false},
+
+    { text: "B.Purchase day book", correct: false},
+
+    { text: "C.Returns outward books", correct: false},
+
+    { text: "D.Returns inward books", correct: true},
+
+
+]
+
+},
+
+    {
+
+        question: ".The purchase of a typewritter for office use is debited to ______.",
+
+        answers: [
+
+            { text: "A.Cash account", correct: false},
+
+            { text: "B.Purchase account", correct: false},
+
+            { text: "C.Cash sales", correct: false},
+
+            { text: "D.Equipment account", correct: true},
+
+
+        ]
+
+    },
+
+    {
+
+        question: ".The double entry principle of accounting was developed by ___",
+
+        answers: [
+
+            { text: "A.Frank wood", correct: false},
+
+            { text: "B.Adam Smith", correct: false},
+
+            { text: "C.Luca Pacioli", correct: true},
+
+            { text: "D.William Pickles", correct: false},
+
+        ]
+
+    },
+
+    {
+
+        question: ".The account which refers to the tangible assets of a company that is of permanent nature is __",
+
+        answers: [
+
+            { text: "A.Personal account", correct: false},
+
+            { text: "B.Norminal account", correct: false},
+
+            { text: "C.Cash account", correct: false},
+
+            { text: "D.Real account", correct: true},
+
+        ]
+
+    },
+
+    {
+
+        question: "If Semilore takes money out of the business bank account for her own personal use, the effect of the transaction is __.",
+
+        answers: [
+
+            { text: "A.Increase in assets and decrease in capital", correct: false},
+
+            { text: "B.Decrease in capital and decrease in assets", correct: true},
+
+            { text: "C.Increase in capital and decrease in assets", correct: false},
+
+            { text: "D.Increase in assets and decrease in assets", correct: false},
+
+        ]
+
+    },
+
+    {
+
+       question: "The original record containing the details of a transaction which serves  as a basis for posting is __.",
+
+       answers: [
+
+          { text: "A.General ledger", correct: false},
+
+          { text: "B.Source document", correct: true},
+
+          { text: "C.Subsidiary books", correct: false},
+
+          { text: "D.Trial balance", correct: false},
+
+       ]
+
+},
+
+{
+
+question: " The document prepared by the buyer and sent to the seller listing the items to be supplied is  __.",
+
+answers: [
+
+    { text: "A.Purchase order", correct: true},
+
+    { text: "B.Sales order", correct: false},
+
+    { text: "C.Proforma invoice", correct: false},
+
+    { text: "D.Credit note", correct: false},
+
+]
+
+},
+
+{
+
+question: "Which of the following accounting records are source documents ?.",
+
+answers: [
+
+    { text: "A.Journal and ledger", correct: false},
+
+    { text: "B.Sales invoice and cash book", correct: false},
+
+    { text: "C.Cash book and debit note", correct: false},
+
+    { text: "D.Sales invoice and debit note", correct: true},
+
+]
+
+},
+
+{
+
+question: "The book of account in which information from the source document are recorded consist of __.",
+
+answers: [
+
+    { text: "A.Prepayments and accruals", correct: false},
+
+    { text: "B.Debit and credit note", correct: false},
+
+    { text: "C.Ledger and subsidiary books", correct: true},
+
+    { text: "D.Profit and loss and balance sheet", correct: false},
+
+]
+
+},
+
+{
+
+question: "Which of the following is not a source document?",
+
+answers: [
+
+    { text: "A.Sales invoice", correct: false},
+
+    { text: "B.Credit note", correct: false},
+
+    { text: "C.Debit note", correct: false},
+
+    { text: "D.Journal proper", correct: true},
+
+]
+
+},
+
+{
+
+question: "When goods are returned to the suppliers, the customer is issued a/an __.",
+
+answers: [
+
+    { text: "A.Debit note", correct: false},
+
+    { text: "B.Credit note", correct: true},
+
+    { text: "C.Invoice", correct: false},
+
+    { text: "D.Delivery note", correct: false},
+
+]
+
+},
+
+{
+
+question: "When a buyer is undercharged, the seller forwards __.",
+
+answers: [
+
+    { text: "A.Undercast note", correct: false},
+
+    { text: "B.consignment note", correct: false},
+
+    { text: "C.Debit note", correct: true},
+
+    { text: "D.Credit note", correct: false},
+
+]
+
+},
+
+{
+
+question: "The source document sent by the seller to the buyer when goods are sold on credit is __.",
+
+answers: [
+
+    { text: "A.Advice note", correct: false},
+
+    { text: "B.Sales invoice", correct: true},
+
+    { text: "C.Credit note", correct: false},
+
+    { text: "D.Debit note", correct: false},
+
+]
+
+},
+
+{
+
+question: "When the invoice of a customer is overcast, the supplier will send to him a __.",
+
+answers: [
+
+    { text: "A.Credit note", correct: true},
+
+    { text: "B.Debit note", correct: false},
+
+    { text: "C.Payment voucher", correct: false},
+
+    { text: "D.Cheque", correct: false},
+
+]
+
+},
+
+{
+
+question: "The document from which entries are transferred to the purchase day book is the __.",
+
+answers: [
+
+    { text: "A.Way bill", correct: false},
+
+    { text: "B.Receipt", correct: false},
+
+    { text: "C.Credit note", correct: false},
+
+    { text: "D.Invoice", correct: true},
+
+]
+
+},
+
+{
+
+question: "Which of the following is not a source document?",
+
+answers: [
+
+    { text: "A.Credit note", correct: false},
+
+    { text: "B.Invoice", correct: true},
+
+    { text: "C.Bank note", correct: false},
+
+    { text: "D.Debit note", correct: false},
+
+]
+
+},
+
+    
+    {
+
+        question: ".Which of the following is entered in the general journal?",
+
+        answers: [
+
+            { text: "A.Returns inwards", correct: false},
+
+            { text: "B.Acquisition of fixed assets", correct: true},
+
+            { text: "C.Purchase of goods", correct: false},
+
+            { text: "D.Sales of goods", correct: false},
+
+        ]
+
+    }
+
+];
+
+
+
+const questionElement = document.getElementById("question");
+
+const answerButtons = document.getElementById("answer-buttons");
+
+const nextButton = document.getElementById("next-btn");
+
+const resetButton = document.getElementById("clear-btn");
+
+const st20 = document.getElementById("st");
+
+const cl20 = document.getElementById("cl");
+
+const printButton = document.getElementById("print-btn");
+
+const number = document.getElementById("number")
+
+let currentQuestionIndex = 0;
+
+let score = 0;
+
+
+
+function startQuiz(){
+
+    currentQuestionIndex = 0;
+
+    score = 0;
+
+    nextButton.innerHTML = "Next";
+
+    showQuestion();
+
+}
+
+
+
+// Set the date we're counting down to
+
+var countDownDate = new Date(Date.now() + (20 * 60 * 1000)).getTime();
+
+
+
+// Update the count down every 1 second
+
+var x = setInterval(function() {
+
+
+
+  // Get today's date and time
+
+  var now = new Date().getTime();
+
+    
+
+  // Find the distance between now and the count down date
+
+  var distance = countDownDate - now;
+
+    
+
+  // Time calculations for days, hours, minutes and seconds
+
+  var days = Math.floor(distance / (1000 * 60 * 60 * 24));
+
+  var hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+
+  var minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+
+  var seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+    
+
+  // Output the result in an element with id="demo"
+
+  document.getElementById("demo").innerHTML = hours + "0:"
+
+  + minutes + ":" + seconds + "";
+
+    
+
+  // If the count down is over, write some text 
+
+  if (distance < 0) {
+
+    clearInterval(x);
+
+    document.getElementById("demo").innerHTML = "EXPIRED";
+
+    showScore();
+
+
+
+  }
+
+}, 1000);
+
+
+
+function showQuestion(){
+
+    resetState();
+
+    let currentQuestion = questions[currentQuestionIndex];
+
+    let questionNo = currentQuestionIndex + 1;
+
+    
+
+    questionElement.innerHTML = questionNo + " " + currentQuestion.question;
+
+    number.innerHTML = questionNo + " ";
+
+    
+
+  
+
+    currentQuestion.answers.forEach(answer => {                            
+
+        const button = document.createElement("button");
+
+        button.innerHTML = answer.text;
+
+        button.classList.add("btn");
+
+        answerButtons.appendChild(button);
+
+        if(answer.correct){
+
+            button.dataset.correct = answer.correct;
+
+        }
+
+        button.addEventListener("click",selectAnswer);                     
+
+    });
+
+}
+
+
+
+
+
+function resetState(){
+
+    nextButton.style.display = "none";
+
+   while(answerButtons.firstChild){
+
+        answerButtons.removeChild(answerButtons.firstChild);    
+
+    } 
+
+}
+
+
+
+
+
+
+
+function selectAnswer(e){
+
+    const selectedBtn = e.target;
+
+    const isCorrect = selectedBtn.dataset.correct === "true";
+
+    if(isCorrect){
+
+        selectedBtn.classList.add("correct");
+
+        score++;
+
+    }else{
+
+        selectedBtn.classList.add("incorrect");
+
+    }
+
+    Array.from(answerButtons.children).forEach(button => {
+
+        if(button.dataset.correct=== "true"){
+
+            button.classList.add("correct");
+
+        }
+
+        button.disabled = true;
+
+    });
+
+    nextButton.style.display = "block";
+
+}
+//Save data to local storage
+function myfunc() {
+    //event.preventDefault();
+    st.value;
+    cl.value;
+    score;
+
+    
+
+    localStorage.setItem('Name20', st.value);
+    localStorage.setItem('Class20', cl.value);
+    localStorage.setItem('Score20', score);
+    alert('Your result has been stored in the archive');
+    window.location.href ="subject.html";
+
+}
+
+
+
+function showScore(){
+
+    resetState();
+
+    clearInterval(x);
+
+    questionElement.innerHTML = `Congratulations ${st.value}, you scored ${score} out of ${questions.length}!`;
+
+    nextButton.innerHTML = "Next Student";
+
+    resetButton.style.display = "block";
+
+    printButton.style.display = "block";
+
+
+
+
+
+}
+
+
+
+function handleNextButton(){
+
+    currentQuestionIndex++;
+
+    if(currentQuestionIndex < questions.length){
+
+        showQuestion()
+
+    }else{
+
+        showScore();
+
+    }
+
+}
+
+
+
+
+
+
+
+nextButton.addEventListener("click",()=>{
+
+    if(currentQuestionIndex < questions.length){
+
+        handleNextButton();
+
+    }else{
+
+        startQuiz();
+
+
+
+    }
+
+});
+
+startQuiz();
+
+</script>
+
+</p>
+<marquee width="100%" behavior="scroll" bgcolor="lightpink">Contact AbdulGafar Tutorpoint @ +2348137649542 for more fantastic Web Designs</marquee>
+</body>
+
+</html>
