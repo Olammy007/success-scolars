@@ -11,10 +11,10 @@
     box-sizing: border-box;
 }
 body{
-    background: purple;
+    background: indigo;
 }
 .app{
-    background: violet;
+    background: gold;
     width: 90%;
     max-width: 600px;
     margin: 100px auto 0;
@@ -109,7 +109,7 @@ Class:<input type="text" id="cl" class="uclass"/>
 <br/>
 <div class="container">
 <h5>Time Left<br> <span id="demo"></span></h5>
-<h5 align = "left">(<span id="number">0</span> of 30)</h5></div>
+<h5 align = "left">(<span id="number">0</span> of 40)</h5></div>
 </h3>
     <div class="quiz">
         <h2 id="question">Question goes here</h2>
@@ -471,7 +471,7 @@ function startQuiz(){
 }
 
 // Set the date we're counting down to
-var countDownDate = new Date(Date.now() + (5 * 60 * 1000)).getTime();
+var countDownDate = new Date(Date.now() + (20 * 60 * 1000)).getTime();
 
 // Update the count down every 1 second
 var x = setInterval(function() {
