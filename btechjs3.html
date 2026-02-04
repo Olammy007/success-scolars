@@ -1,0 +1,848 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>AbdulGafar Awesome ICT Exam</title>
+<style>
+* {
+    margin: 0;
+    padding: 0;
+    font-family: 'Poppins',sans-seriff;
+    box-sizing: border-box;
+}
+body{
+    background: blue;
+}
+.app{
+    background: violet;
+    width: 90%;
+    max-width: 600px;
+    margin: 100px auto 0;
+    border: 6px solid brown; 
+    border-radius: 10px;
+    padding: 30px;
+}
+.app h1{
+    font-weight: 25px;
+    color: #001e4d;
+    font-weight: 600;
+    border-bottom: 1px solid #333;
+    padding-bottom: 30px;
+    text-align: center;
+}
+.quiz{
+    padding: 20px 0;
+}
+.quiz h2{
+    font-size: 18px;
+    color: #001e4d;
+    font-weight: 600;
+}
+.btn{
+    background: #fff;
+    color: #222;
+    font-weight: 500;
+    width: 100%;
+    border: 1px solid #222;
+    padding: 10px;
+    margin: 10px 0;
+    text-align: left;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: all 0.3s;
+}
+.btn:hover:not([disabled]){
+    background: #222;
+    color: #fff;
+}
+.btn:disabled{
+    cursor: no-drop;
+}
+#next-btn{
+    background: #001e4d;
+    color: #fff;
+    font-weight: 500;
+    width: 150px;
+    border: 0;
+    padding: 10px;
+    margin: 20px auto 0;
+    border-radius: 4px;
+    cursor: pointer;
+    display: none;
+}
+.correct{
+    background: #9aeabc;
+}
+.incorrect{
+    background: #ff9393;
+}
+.b{
+    display: flex;
+    background: #001e4d;
+    gap: 80px;
+    justify-content: center;
+    align-items: center;
+    align-content: center;
+}
+.b button{
+    background-color: purple;
+    color: white;
+}
+#st{
+    font: 0.7em sans-serif;
+    font-weight: bold;
+}
+#cl{
+    font: 0.7em sans-serif;
+    font-weight: bold;
+}
+</style>
+</head>
+<body>
+<div class="app">
+    <h1><img src="logo2.png" width="100" height="100" align="left">AbdulGafar TutorPoint Periodic CBT Evaluation</h1>
+<h3 align="center">
+<form >
+Subject:<input type="text" id="st" name="uname"/>
+</form>
+Class:<input type="text" id="cl" class="uclass"/>
+<br/>
+<div class="container">
+<h5>Time Left<br> <span id="demo"></span></h5>
+<h5 align = "left">(<span id="number">0</span> of 70)</h5></div>
+</h3>
+    <div class="quiz">
+        <h2 id="question">Question goes here</h2>
+        <div id="answer-buttons">
+            <button class="btn">Answer 1</button>
+            <button class="btn">Answer 2</button>
+            <button class="btn">Answer 3</button>
+            <button class="btn">Answer 4</button>
+        </div>
+           <button id="next-btn">Next</button>
+   <div class="b">
+         <button hidden id="clear-btn" onclick="location.reload()">Reset</button>
+         <button hidden id="print-btn" onclick="myfunc()">Submit</button>
+   </div>
+<script>
+const questions = [
+    {
+        question: ".The accurate representation of an object is referred to as _____ ",
+        answers: [
+            { text: "A.Scale drawing", correct: true},
+            { text: "B.Satoshi", correct: false},
+            { text: "C.Substantial", correct: false},
+        ]
+    },
+    {
+        question: ".The smaller size to an original or actual object is called___ ",
+        answers: [
+            { text: "A.Scale enlargement", correct: false},
+            { text: "B.Half size scaling", correct: false},
+            { text: "C.Scale reduction", correct: true},
+        ]
+    },
+    {
+        question: "._______ scale is used to represent objects as they appear in real life_ ",
+        answers: [
+            { text: "A.Full scale", correct: true},
+            { text: "B.Half-scale ", correct: false},
+            { text: "C.Lower scale", correct: false},
+        ]
+    },
+    {
+        question: ".The pictorial drawing that shows the three faces of an object is known as ________ ",
+        answers: [
+            { text: "A.Isomer", correct: true},
+            { text: "B.Isonomic drawing", correct: false},
+            { text: "C.Isometric drawing", correct: true},
+        ]
+    },
+    {
+        question: ".___ indicates the relationship between the dimension on the drawing and the actual dimension of the object(e.g Building)",
+        answers: [
+            { text: "A.Plan", correct: false},
+            { text: "B.Scale", correct: true},
+            { text: "C.Elevation", correct: false},
+        ]
+    },
+    {
+        question: ".Receding lines in isometric are inclined at _______ degree  to the horizontal. ",
+        answers: [
+            { text: "A.90 degree", correct: false},
+            { text: "B.60 degree", correct: false},
+            { text: "C.30 degree", correct: true},
+        ]
+    },
+    {
+        question: ".Which of the following is used to create a sense of depth?",
+        answers: [
+            { text: "A.Orthogonal line", correct: true},
+            { text: "B.Vanishing point line", correct: false},
+            { text: "C.One-point line", correct: false},
+        ]
+    },
+
+    {
+        question: ".There are ____ specific types of oblique drawing ",
+        answers: [
+            { text: "A.3", correct: false},
+            { text: "B.2", correct: true},
+            { text: "C.1", correct: false},
+        ]
+    },
+    {
+        question: ".In ______ oblique drawing one axis is horizontal while the other is vertical ",
+        answers: [
+            { text: "A.Cathode", correct: false},
+            { text: "B.Carter", correct: false},
+            { text: "C.Cabinet", correct: true},
+        ]
+    },
+    {
+        question: ".In cabinet projection, the angle between oblique projection and the plane is placed at____ degree ",
+        answers: [
+            { text: "A.60", correct: true},
+            { text: "B.45", correct: false},
+            { text: "C.30", correct: false},
+        ]
+    },
+    {
+        question: ".In oblique drawings the receding lines are inclined at ____ degree ",
+        answers: [
+            { text: "A.75", correct: false},
+            { text: "B.55", correct: false},
+            { text: "C.45", correct: true},
+        ]
+    },
+    {
+        question: ".______ is the process where a newly felled tree is converted into workable lumber ",
+        answers: [
+            { text: "A.Wood seasoning", correct: false},
+            { text: "B.Wood conversion", correct: true},
+            { text: "C.Wood processing", correct: false},
+        ]
+    },
+    {
+        question: ".There are ______ types of scale drawing ",
+        answers: [
+            { text: "A.3", correct: true},
+            { text: "B.4", correct: false},
+            { text: "C.2", correct: false},
+        ]
+    },
+    {
+        question: "______ and cabinet projections are the two major types of oblique drawing ",
+        answers: [
+            { text: "A.Oblique", correct: false},
+            { text: "B.Orthogonal", correct: false},
+            { text: "C.Cavalier", correct: true},
+        ]
+    },
+    {
+        question: ".____ is an engineering discipline comprising the production of forest products, such as pulp and paper, construction materials, etc._ ",
+        answers: [
+            { text: "A.Wood seasoning", correct: false},
+            { text: "B.Wood pruning", correct: false},
+            { text: "C.Wood processing", correct: true},
+        ]
+    },
+    {
+        question: ".The technique where all the receding lines from the objects meet and vanish at a single point is called _______ perspective drawing ",
+        answers: [
+            { text: "A.One-point", correct: true},
+            { text: "B.Two-point", correct: false},
+            { text: "C.Three- point", correct: false},
+        ]
+    },
+    {
+        question: ".The point where all the parallel lines seem to meet and gradually disappear is referred to as _______ point. ",
+        answers: [
+            { text: "A.Actual", correct: false},
+            { text: "B.Vanishing", correct: true},
+            { text: "C.Reflex", correct: false},
+        ]
+    },
+    {
+        question: ".The ______ of timber is a phrase usually used in reference to turning a log into a pile of boards/planks which is done by using a saw mill. ",
+        answers: [
+            { text: "A.Conversion", correct: true},
+            { text: "B.Preservation", correct: false},
+            { text: "C.Seasoning", correct: false},
+        ]
+    },
+    {
+        question: ".The two main orthographic projection are ______ angle and ______ angle projection ",
+        answers: [
+            { text: "A.1st and 2nd", correct: false},
+            { text: "B.2nd and 4th", correct: false},
+            { text: "C.1st and 3rd", correct: true},
+        ]
+    },
+    {
+        question: ".______ is the term used to describe the process of drying wood.",
+        answers: [
+            { text: "A.Conversion", correct: false},
+            { text: "B.Seasoning", correct: true},
+            { text: "C.Drying", correct: false},
+        ]
+    },
+    {
+        question: ".The front _______ is seen in the vertical plane. ",
+        answers: [
+            { text: "A.Elevation", correct: true},
+            { text: "B.Retrogression", correct: false},
+            { text: "C.Preservatiomn", correct: false},
+        ]
+    },
+    {
+        question: ".Practice, patience, time and metal alertness are the qualities that must be seen in one that practices technical drawing.",
+        answers: [
+            { text: "A.Necessarily", correct: false},
+            { text: "B.True", correct: true},
+            { text: "C.False", correct: false},
+        ]
+    },
+    
+    {
+        question: ".The instrument used for drawing circles is the___ ",
+        answers: [
+            { text: "A.Compass", correct: true},
+            { text: "B.Protractor", correct: false},
+            { text: "C.Ruler", correct: false},
+        ]
+    },
+    
+    {
+        question: ".Which instrument is used for drawing horizontal lines?",
+        answers: [
+            { text: "A.T-square", correct: true},
+            { text: "B.Compass", correct: false},
+            { text: "C.Divider", correct: false},
+        ]
+    },
+    {
+        question: ".A wall is defined as a structure that__ ",
+        answers: [
+            { text: "A.Encloses, separates, or supports parts of a building", correct: true},
+            { text: "B.Opens the windows", correct: false},
+            { text: "C.Supports the roof only", correct: false},
+        ]
+    },
+    {
+        question: ".A load-bearing wall___ ",
+        answers: [
+            { text: "A.Does not support any weight", correct: false},
+            { text: "B.Supports the weight of the roof and upper floors", correct: true},
+            { text: "C.Has no openings", correct: false},
+        ]
+    },
+    {
+        question: ".A cavity wall is designed to___ ",
+        answers: [
+            { text: "A.Separate rooms internally", correct: false},
+            { text: "B.Replace the roof", correct: false},
+            { text: "C.Prevent moisture penetration and provide insulation", correct: true},
+        ]
+    },
+    {
+        question: ".Which window type is hinged at the side? ",
+        answers: [
+            { text: "A.Casement", correct: true},
+            { text: "B.Sliding", correct: false},
+            { text: "C.Fixed", correct: false},
+        ]
+    },
+    {
+        question: ".An opening in a wall for ventilation or light is called___ ",
+        answers: [
+            { text: "A.Window", correct: true},
+            { text: "B.Door", correct: false},
+            { text: "C.Beam", correct: false},
+        ]
+    },
+    {
+        question: ".A door is defined as a structure that___ ",
+        answers: [
+            { text: "A.Covers the building from rain", correct: false},
+            { text: "B.Provides access to a building or room", correct: true},
+            { text: "C.Supports the wall", correct: false},
+        ]
+    },
+    {
+        question: ".A hinged door___ ",
+        answers: [
+            { text: "A.Rotates around a central axis", correct: false},
+            { text: "B.Slides horizontally", correct: false},
+            { text: "C.Swings inward or outward on hinges", correct: true},
+        ]
+    },
+    {
+        question: ".A gable roof is characterized by___ ",
+        answers: [
+            { text: "A.Single sloping surface", correct: false},
+            { text: "B.All sides sloping downward", correct: false},
+            { text: "C.Two sloping sides forming a ridge", correct: true},
+        ]
+    },
+    
+    {
+        question: ".The French curve is used for drawing____ ",
+        answers: [
+            { text: "A.Straight lines", correct: false},
+            { text: "B.irregular curves", correct: true},
+            { text: "C.angles", correct: false},
+        ]
+    },
+   
+    {
+        question:".Which of the following is a drawing material?",
+        answers: [
+            { text: "A.Set square", correct: false},
+            { text: "B.Compass", correct: false},
+            { text: "C.Drawing paper", correct: true},
+        ]
+    },
+    {
+        question: ".Drawing pins are used to___",
+        answers: [
+            { text: "A.measure angles", correct: false},
+            { text: "B.draw curves", correct: false},
+            { text: "C.hold papers on the board", correct: true},
+        ]
+    },
+    
+    {
+        question: ".Drawing instruments should be handled carefully to",
+        answers: [
+            { text: "A.waste time", correct: false},
+            { text: "B.make drawing difficult", correct: false},
+            { text: "C.ensure neat and accurate drawing", correct: true},
+        ]
+    },
+    {
+        question: ".The correct way to use a T-square is to place it.",
+        answers: [
+            { text: "A.against the edge of the drawing board", correct: true},
+            { text: "B.under the paper", correct: false},
+            { text: "C.loosely on the board", correct: false},
+        ]
+    },
+    {
+        question: ".Which of the following helps to care for drawing instruments?",
+        answers: [
+            { text: "A.Bending them", correct: false},
+            { text: "B.Pressing hard", correct: false},
+            { text: "C.Cleaning after use", correct: true},
+        ]
+    },
+    {
+        question: ".A compass should be held ______ when drawing a circle.",
+        answers: [
+            { text: "A.Slanting", correct: false},
+            { text: "B.Upright", correct: true},
+            { text: "C.Upside down", correct: false},
+        ]
+    },
+    {
+        question: ".Drawing instruments should be kept",
+        answers: [
+            { text: "A.In a drawing case", correct: true},
+            { text: "B.On the floor", correct: false},
+            { text: "C.Inside water", correct: false},
+        ]
+    },
+    {
+        question: ".The main purpose of setting out drawing paper properly is to",
+        answers: [
+            { text: "A.Waste time", correct: false},
+            { text: "B.Ensure accuracy", correct: true},
+            { text: "C.Allow movement", correct: false},
+        ]
+    },
+    {
+        question: ".A pencil sharpened flat on one side is known as___",
+        answers: [
+            { text: "A.Blunt point", correct: false},
+            { text: "B.Knife edge", correct: true},
+            { text: "C.Conical point", correct: false},
+        ]
+    },
+    {
+        question: ".____ are to be used to stop fire from destroying lives sand.",
+        answers: [
+            { text: "A.Helmets", correct: false},
+            { text: "B.Extinguishers and bucket of sand", correct: true},
+            { text: "C.Googles", correct: false},
+        ]
+    },
+    {
+        question: "is a place where activities such as fabrication, designing, construction and drawing take place.",
+        answers: [
+            { text: "A.Workshop", correct: true},
+            { text: "B.Hospital", correct: false},
+            { text: "C.Station", correct: false},
+        ]
+    },
+    {
+        question: ".______means protection from, or not being exposed to, the risk of harm or injury",
+        answers: [
+            { text: "A.Technology", correct: false},
+            { text: "B.Safety", correct: true},
+            { text: "C.Methodology", correct: false},
+        ]
+    },
+    {
+        question: ".The materials used in technology include the following except___",
+        answers: [
+            { text: "A.Cassava", correct: true},
+            { text: "B.Metal", correct: false},
+            { text: "C.Ceramics", correct: false},
+        ]
+    },
+    {
+        question: ".The group of metals that contains iron is known as___",
+        answers: [
+            { text: "A.Alloys", correct: false},
+            { text: "B.Ferrous metals", correct: true},
+            { text: "C.Terrazzo", correct: false},
+        ]
+    },
+    {
+        question: ".Glass is used to manufacture eye glasses and lenses because of this property",
+        answers: [
+            { text: "A.Brittleness", correct: false},
+            { text: "B.Resistance to heat", correct: false},
+            { text: "C.Transparent", correct: true},
+        ]
+    },
+    {
+        question: ".Technical people include the following EXCEPT ___",
+        answers: [
+            { text: "A.Engineers", correct: false},
+            { text: "B.Lawyer", correct: true},
+            { text: "C.Builders and draughtman", correct: false},
+        ]
+    },
+    {
+        question: ".Title block is at the……...hand corner of the drawing __",
+        answers: [
+            { text: "A.Right-Left", correct: false},
+            { text:"B.Left", correct: false},
+            { text: "C.Right", correct: true},
+        ]
+    },
+    {
+        question: ".2.	_______ can be defined as the shortest distance between two points.",
+        answers: [
+            { text: "A.Curve line", correct: false},
+            { text: "B.Straight line", correct: true},
+            { text: "C.Circle", correct: false},
+        ]
+    },
+    {
+        question: "..________  can be defined as the accurate representation of objects in a determined proportion",
+        answers: [
+            { text: "A.Isometric drawing", correct: false},
+            { text: "B.Freehand sketching", correct: true},
+            { text: "C.Scale drawing", correct: false},
+        ]
+    },
+    {
+        question: ".Which instrument is placed directly against the edge of the drawing board?",
+        answers: [
+            { text: "A.T-square", correct: true},
+            { text: "B.Protractor.", correct: false},
+            { text: "C.Compass.", correct: false},
+        ]
+    },
+    {
+        question: ".Vertical lines are drawn using___",
+        answers: [
+            { text: "Set squares", correct: true},
+            { text: "B.Ruler only", correct: false},
+            { text: "Protractor", correct: false},
+        ]
+    },
+    {
+        question: ".The title block on a drawing paper contains",
+        answers: [
+            { text: "A.Decoration", correct: false},
+            { text: "B.Drawing information", correct: true},
+            { text: "C.Pictures", correct: false},
+        ]
+    },
+    {
+        question: ".Lettering in technical drawing means__",
+        answers: [
+            { text: "A.Writing letters and numbers neatly", correct: true},
+            { text: "B.Drawing shapes", correct: false},
+            { text: "C.Colouring drawings", correct: false},
+        ]
+    },
+    {
+        question: ".The best type of letters used in technical drawing are__",
+        answers: [
+            { text: "A.Cursive", correct: false},
+            { text: "B.Capital letters", correct: true},
+            { text: "C.Small letters", correct: false},
+        ]
+    },
+    {
+        question: ".Freehand lettering is done__",
+        answers: [
+            { text: "A.Without drawing instruments", correct: true},
+            { text: "B.On the board", correct: false},
+            { text: "C.With only ruler", correct: false},
+        ]
+    },
+    {
+        question: ".The best way to draw straight lines freehand is by moving the.",
+        answers: [
+            { text: "A.Elbow and shoulder", correct: true},
+            { text: "B. Head", correct: false},
+            { text: "C.Finger only", correct: false},
+        ]
+    },
+    {
+        question: ".Curved lines should be drawn",
+        answers: [
+            { text: "A.With broken stroke", correct: false},
+            { text: "B.roughly", correct: false},
+            { text: "C.In one smooth motion", correct: true},
+        ]
+    },
+    {
+        question: ".Drawing lightly first helps to_",
+        answers: [
+            { text: "A.Confuse the artist", correct: false},
+            { text: "B.Correct mistakes easily", correct: true},
+            { text: "C.Spoil the drawing", correct: false},
+        ]
+    },
+    {
+        question: ".Freehand sketching is important because it__",
+        answers: [
+            { text: "A.Replaces technical drawing", correct: false},
+            { text: "B. Slows drawing work", correct: false},
+            { text: "C.Helps to express ideas quickly", correct: true},
+        ]
+    },
+    {
+        question: ".Freehand sketching of hand tools is done.__",
+        answers: [
+            { text: "A.Without drawing instrument", correct: true},
+            { text: "B. Using graph paper", correct: false},
+            { text: "C.With compass", correct: false},
+        ]
+    },
+    {
+        question: ".Which of the following is a woodwork hand tool?",
+        answers: [
+            { text: "A. Plier", correct: false},
+            { text: "B. File", correct: false},
+            { text: "C. Chisel", correct: true},
+        ]
+    },
+    {
+        question: ".The first step in sketching a hand tool is to___",
+        answers: [
+            { text: "A. Observe the tool carefully", correct: true},
+            { text: "B. Draw heavy strokes", correct: false},
+            { text: "C. Darken the lines", correct: false},
+        ]
+    },
+    {
+        question: ".Freehand sketching of tools helps students to___",
+        answers: [
+            { text: "A. Confuse tools names", correct: false},
+            { text: "B. Identify and understand the tools", correct: true},
+            { text: "C.Damage tools", correct: false},
+        ]
+    },
+    {
+        question: ".A tool used for measuring long lengths of wood is the___",
+        answers: [
+            { text: "A. Measuring tape", correct: true},
+            { text: "B. gimlet", correct: false},
+            { text: "C.Try square", correct: false},
+        ]
+    },
+    {
+        question: ".Which tool is mainly used for marking parallel lines?",
+        answers: [
+            { text: "A. Hand drill", correct: false},
+            { text: "B. Brace and bit", correct: false},
+            { text: "C.Making guage", correct: true},
+        ]
+    },
+    {
+        question: ".Good lettering helps to___",
+        answers: [
+            { text: "Confuse readers", correct: false},
+            { text: "B. Beautify drawing only", correct: false},
+            { text: "C.Make drawing clear and readable", correct: true},
+        ]
+    },
+    {
+        question: ".Numerals in technical drawing should be___",
+        answers: [
+            { text: "A.Slanted", correct: false},
+            { text: "B.Different sizes", correct: false},
+            { text: "C.Uniform and neat", correct: true},
+        ]
+    }
+
+
+];
+
+const questionElement = document.getElementById("question");
+const answerButtons = document.getElementById("answer-buttons");
+const nextButton = document.getElementById("next-btn");
+const resetButton = document.getElementById("clear-btn");
+const st4 = document.getElementById("st");
+const cl4 = document.getElementById("cl");
+const printButton = document.getElementById("print-btn");
+const number = document.getElementById("number")
+let currentQuestionIndex = 0;
+let score = 0;
+
+function startQuiz(){
+    currentQuestionIndex = 0;
+    score = 0;
+    nextButton.innerHTML = "Next";
+    showQuestion();
+}
+
+// Set the date we're counting down to
+var countDownDate = new Date(Date.now() + (30 * 60 * 1000)).getTime();
+
+// Update the count down every 1 second
+var x = setInterval(function() {
+
+  // Get today's date and time
+  var now = new Date().getTime();
+    
+  // Find the distance between now and the count down date
+  var distance = countDownDate - now;
+    
+  // Time calculations for days, hours, minutes and seconds
+  var days = Math.floor(distance / (1000 * 60 * 60 * 24));
+  var hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+  var minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+  var seconds = Math.floor((distance % (1000 * 60)) / 1000);
+    
+  // Output the result in an element with id="demo"
+  document.getElementById("demo").innerHTML = hours + "0:"
+  + minutes + ":" + seconds + "";
+    
+  // If the count down is over, write some text 
+  if (distance < 0) {
+    clearInterval(x);
+    document.getElementById("demo").innerHTML = "EXPIRED";
+    showScore();
+
+  }
+}, 1000);
+
+function showQuestion(){
+    resetState();
+    let currentQuestion = questions[currentQuestionIndex];
+    let questionNo = currentQuestionIndex + 1;
+    
+    questionElement.innerHTML = questionNo + " " + currentQuestion.question;
+    number.innerHTML = questionNo + " ";
+    
+  
+    currentQuestion.answers.forEach(answer => {                            
+        const button = document.createElement("button");
+        button.innerHTML = answer.text;
+        button.classList.add("btn");
+        answerButtons.appendChild(button);
+        if(answer.correct){
+            button.dataset.correct = answer.correct;
+        }
+        button.addEventListener("click",selectAnswer);                     
+    });
+}
+
+
+function resetState(){
+    nextButton.style.display = "none";
+   while(answerButtons.firstChild){
+        answerButtons.removeChild(answerButtons.firstChild);    
+    } 
+}
+
+
+
+function selectAnswer(e){
+    const selectedBtn = e.target;
+    const isCorrect = selectedBtn.dataset.correct === "true";
+    if(isCorrect){
+        selectedBtn.classList.add("correct");
+        score++;
+    }else{
+        selectedBtn.classList.add("incorrect");
+    }
+    Array.from(answerButtons.children).forEach(button => {
+        if(button.dataset.correct=== "true"){
+            button.classList.add("correct");
+        }
+        button.disabled = true;
+    });
+    nextButton.style.display = "block";
+}
+//Save data to local storage
+function myfunc() {
+    //event.preventDefault();
+    st.value;
+    cl.value;
+    score;
+
+    
+
+    localStorage.setItem('Name4', st.value);
+    localStorage.setItem('Class4', cl.value);
+    localStorage.setItem('Score4', score);
+    alert('Your result has been stored in the archive');
+    window.location.href ="subjectjs1.html";
+}
+    
+
+function showScore(){
+    resetState();
+    clearInterval(x);
+    questionElement.innerHTML = `Congratulations, in ${st.value}, you scored ${score} out of ${questions.length}!`;
+    nextButton.innerHTML = "Next Student";
+    resetButton.style.display = "block";
+    printButton.style.display = "block";
+
+
+}
+
+function handleNextButton(){
+    currentQuestionIndex++;
+    if(currentQuestionIndex < questions.length){
+        showQuestion()
+    }else{
+        showScore();
+    }
+}
+
+
+
+nextButton.addEventListener("click",()=>{
+    if(currentQuestionIndex < questions.length){
+        handleNextButton();
+    }else{
+        startQuiz();
+
+    }
+});
+startQuiz();
+</script>
+</p>
+<marquee width="100%" behavior="scroll" bgcolor="lightpink">Contact AbdulGafar Tutorpoint @ +2348137649542 for more fantastic Web Designs</marquee>
+</body>
+</html>
