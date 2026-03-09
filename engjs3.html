@@ -1,0 +1,1292 @@
+<!DOCTYPE html>
+
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <title>AbdulGafar Awesome ICT Exam</title>
+
+<style>
+
+* {
+
+    margin: 0;
+
+    padding: 0;
+
+    font-family: 'Poppins',sans-seriff;
+
+    box-sizing: border-box;
+
+}
+
+body{
+
+    background: lightcoral;
+
+}
+
+.app{
+
+    background: greenyellow;
+
+    width: 90%;
+
+    max-width: 600px;
+
+    margin: 100px auto 0;
+
+    border: 6px solid brown; 
+
+    border-radius: 10px;
+
+    padding: 30px;
+
+}
+
+.app h1{
+
+    font-weight: 25px;
+
+    color: #001e4d;
+
+    font-weight: 600;
+
+    border-bottom: 1px solid #333;
+
+    padding-bottom: 30px;
+
+    text-align: center;
+
+}
+
+.quiz{
+
+    padding: 20px 0;
+
+}
+
+.quiz h2{
+
+    font-size: 18px;
+
+    color: #001e4d;
+
+    font-weight: 600;
+
+}
+
+.btn{
+
+    background: #fff;
+
+    color: #222;
+
+    font-weight: 500;
+
+    width: 100%;
+
+    border: 1px solid #222;
+
+    padding: 10px;
+
+    margin: 10px 0;
+
+    text-align: left;
+
+    border-radius: 4px;
+
+    cursor: pointer;
+
+    transition: all 0.3s;
+
+}
+
+.btn:hover:not([disabled]){
+
+    background: #222;
+
+    color: #fff;
+
+}
+
+.btn:disabled{
+
+    cursor: no-drop;
+
+}
+
+#next-btn{
+
+    background: #001e4d;
+
+    color: #fff;
+
+    font-weight: 500;
+
+    width: 150px;
+
+    border: 0;
+
+    padding: 10px;
+
+    margin: 20px auto 0;
+
+    border-radius: 4px;
+
+    cursor: pointer;
+
+    display: none;
+
+}
+
+.correct{
+
+    background: #9aeabc;
+
+}
+
+.incorrect{
+
+    background: #ff9393;
+
+}
+
+.b{
+
+    display: flex;
+
+    background: #001e4d;
+
+    gap: 80px;
+
+    justify-content: center;
+
+    align-items: center;
+
+    align-content: center;
+
+}
+
+.b button{
+
+    background-color: purple;
+
+    color: white;
+
+}
+
+#st{
+
+    font: 0.7em sans-serif;
+
+    font-weight: bold;
+
+}
+
+#cl{
+
+    font: 0.7em sans-serif;
+
+    font-weight: bold;
+
+}
+
+</style>
+
+</head>
+
+<body>
+
+<div class="app">
+
+    <h1><img src="logo2.png" width="100" height="100" align="left">AbdulGafar TutorPoint Periodic CBT Evaluation</h1>
+
+<h3 align="center">
+
+<form >
+
+Subject:<input type="text" id="st" name="uname"/>
+
+</form>
+
+Class:<input type="text" id="cl" class="uclass"/>
+
+<br/>
+
+<div class="container">
+
+<h5>Time Left<br> <span id="demo"></span></h5>
+
+<h5 align = "left">(<span id="number">0</span> of 50)</h5></div>
+
+</h3>
+
+    <div class="quiz">
+
+        <h2 id="question">Question goes here</h2>
+
+        <div id="answer-buttons">
+
+            <button class="btn">Answer 1</button>
+
+            <button class="btn">Answer 2</button>
+
+            <button class="btn">Answer 3</button>
+
+            <button class="btn">Answer 4</button>
+
+        </div>
+
+           <button id="next-btn">Next</button>
+
+   <div class="b">
+
+         <button hidden id="clear-btn" onclick="location.reload()">Reset</button>
+
+         <button hidden id="print-btn" onclick="myfunc()">Submit</button>
+
+   </div>
+
+
+<script>
+
+const questions = [
+
+    {
+
+        question: ". A poem which is used to celebrate heroes is called",
+
+        answers: [
+
+            { text: "A.Parody", correct: false},
+
+            { text: "B.Epic", correct: true},
+
+            { text: "C.Ballards", correct: false},
+
+        ]
+
+    },
+    {
+
+question: "Which of the following suggests the use of sounds to describe a character?.",
+
+answers: [
+
+    { text: "A.Onomatopoeia", correct: true},
+
+    { text: "B.Synecdoche", correct: false},
+
+    { text: "C.litotes", correct: false},
+
+]
+
+},
+{
+
+question: "The character that opposes a Hero in a play is the ____.",
+
+answers: [
+
+    { text: "A.Rhetorical", correct: false},
+
+    { text: "B.Heroine", correct: false},
+
+    { text: "C.Antagonist", correct: true},
+
+]
+
+},
+{
+
+question: "Drama is written in ____ .",
+
+answers: [
+
+    { text: "A.Acts and lines", correct: false},
+
+    { text: "B.Acts and scene", correct: true},
+
+    { text: "C.Chapters", correct: false},
+
+]
+
+},
+{
+
+question: "A poetic device which exaggerates situation is known as __.",
+
+answers: [
+
+    { text: "A.Climax", correct: false},
+
+    { text: "B.Flashback", correct: false},
+
+    { text: "C.Hyperbole", correct: true},
+
+]
+
+},
+{
+
+question: "One of the genre of literature is ___.",
+
+answers: [
+
+    { text: "A.Prose", correct: true},
+
+    { text: "B.Fiction", correct: false},
+
+    { text: "C.Lines", correct: false},
+
+]
+
+},
+{
+
+question: "She is an angel is an example of __.",
+
+answers: [
+
+    { text: "A.Pun", correct: false},
+
+    { text: "B.Irony", correct: false},
+
+    { text: "C.Metaphor", correct: true},
+
+]
+
+},
+{
+
+question: "*Choose the most suitable in the options* Mary is a ____ since she is unmarried .",
+
+answers: [
+
+    { text: "A.Spinster", correct: true},
+
+    { text: "B.Widow", correct: false},
+
+    { text: "C.Bride", correct: false},
+
+]
+
+},
+{
+
+question: "The ____ arrived in Nigeria in the nineteen century.",
+
+answers: [
+
+    { text: "A.Missionery", correct: false},
+
+    { text: "B.Missionary", correct: true},
+
+    { text: "C.Misionary", correct: false},
+
+]
+
+},
+{
+
+question: "Either my brother or her sisters will ___ to the stream tomorrow.",
+
+answers: [
+
+    { text: "A.Coming", correct: false},
+
+    { text: "B.Came", correct: false},
+
+    { text: "C.Come", correct: true},
+
+]
+
+},
+{
+
+question: "Everybody is ____ the hall already.",
+
+answers: [
+
+    { text: "A.in", correct: true},
+
+    { text: "B.on", correct: false},
+
+    { text: "C.for", correct: false},
+
+]
+
+},
+{
+
+question: "She came to the office ____ see the manager.",
+
+answers: [
+
+    { text: "A.to", correct: true},
+
+    { text: "B.in", correct: false},
+
+    { text: "C.for", correct: false},
+
+]
+
+},
+{
+
+question: "Neithe Bola ____ Nneoma came to school today.",
+
+answers: [
+
+    { text: "A. with", correct: false},
+
+    { text: "B. or", correct: false},
+
+    { text: "C. nor", correct: true},
+
+]
+
+},
+{
+
+question: "The two political parties now have a ______ candidate.",
+
+answers: [
+
+    { text: "A. concensus", correct: false},
+
+    { text: "B. consensus", correct: true},
+
+    { text: "C. consecusus", correct: false},
+
+]
+
+},
+{
+
+question: "They will have ____ to blame for coming to school late.",
+
+answers: [
+
+    { text: "A.themselves", correct: true},
+
+    { text: "B.theirself", correct: false},
+
+    { text: "C.ourselves", correct: false},
+
+]
+
+},
+{
+
+question: "*Choose the word that is most nearly opposite* The newly acquired bus had been ____ off.",
+
+answers: [
+
+    { text: "A.ripped", correct: false},
+
+    { text: "B.disposed", correct: true},
+
+    { text: "C.switched", correct: false},
+
+]
+
+},
+{
+
+question: "The seemly incurable disease had been ___.",
+
+answers: [
+
+    { text: "A.diagnosed", correct: false},
+
+    { text: "B.examined", correct: false},
+
+    { text: "C.cured", correct: true},
+
+]
+
+},
+{
+
+question: "The patient refused to take the drug prescribed by the ____.",
+
+answers: [
+
+    { text: "A.pharmacist", correct: true},
+
+    { text: "B.technician", correct: false},
+
+    { text: "C.teacher", correct: false},
+
+]
+
+},
+{
+
+question: "He declined the offer but his friend ____ it.",
+
+answers: [
+
+    { text: "A.embraced", correct: false},
+
+    { text: "B.refused", correct: false},
+
+    { text: "C.accepted", correct: true},
+
+]
+
+},
+{
+
+question: "The bureau de change staff exchanged the foreign currency for the ____ one.",
+
+answers: [
+
+    { text: "A.local", correct: true},
+
+    { text: "B.national", correct: false},
+
+    { text: "C.international", correct: false},
+
+]
+
+},
+{
+
+question: "*How great is your mercy oh Lord?*.",
+
+answers: [
+
+    { text: "A.Rhetorical", correct: true},
+
+    { text: "B.Synecdoche", correct: false},
+
+    { text: "C.litotes", correct: false},
+
+]
+
+},
+{
+
+question: "*Choose from the options, the one that is nearest in meaning*.The lawyer *PLEADED* for leniency ",
+
+answers: [
+
+    { text: "A. arrogated", correct: false},
+
+    { text: "B.succumb", correct: false},
+
+    { text: "C.begged", correct: true},
+
+]
+
+},
+{
+
+question: "He *SQUANDERED* the fortune which his uncle left for him.",
+
+answers: [
+
+    { text: "A.lost", correct: false},
+
+    { text: "B.spent", correct: false},
+
+    { text: "C.wasted", correct: true},
+
+]
+
+},
+{
+
+question: "His punishment was quite *FAIR*.",
+
+answers: [
+
+    { text: "A.just", correct: true},
+
+    { text: "B.severe", correct: false},
+
+    { text: "C.legal", correct: false},
+
+]
+
+},
+{
+
+question: "The driver *PULLED UP* beside the bank.",
+
+answers: [
+
+    { text: "A.handled", correct: false},
+
+    { text: "B.hurried", correct: false},
+
+    { text: "C.halted", correct: true},
+
+]
+
+},
+{
+
+question: "*Danny closed the programs and logged ____ when it was time to go home.",
+
+answers: [
+
+    { text: "A.off", correct: false},
+
+    { text: "B.out", correct: true},
+
+    { text: "C.for", correct: false},
+
+]
+
+},
+{
+
+question: "They checked _____ at the Sheratton yesterday.",
+
+answers: [
+
+    { text: "A.in", correct: true},
+
+    { text: "B.on", correct: false},
+
+    { text: "C.to", correct: false},
+
+]
+
+},
+{
+
+question: "The book consists ____ five chapters.",
+
+answers: [
+
+    { text: "A. by", correct: false},
+
+    { text: "B. of", correct: true},
+
+    { text: "C. at", correct: false},
+
+]
+
+},
+{
+
+question: "The rules of the sport were laid ____ early in the noneteeth century.",
+
+answers: [
+
+    { text: "A.down", correct: true},
+
+    { text: "B.by", correct: false},
+
+    { text: "C.over", correct: false},
+
+]
+
+},
+{
+
+question: "They're finding it increasingly difficult to ___ by since their daughter was born.",
+
+answers: [
+
+    { text: "A.go", correct: false},
+
+    { text: "B.grow", correct: false},
+
+    { text: "C.get", correct: true},
+
+]
+
+},
+{
+
+question: "It took them six months to ____ up the house before they could actually move in.",
+
+answers: [
+
+    { text: "A.go", correct: false},
+
+    { text: "B.do", correct: true},
+
+    { text: "C.drop", correct: false},
+
+]
+
+},
+{
+
+question: "Several charities ____ out an appeal on TV for money for the victims of the flooding in Mozambique.",
+
+answers: [
+
+    { text: "A.put", correct: true},
+
+    { text: "B.pull", correct: false},
+
+    { text: "C.pass", correct: false},
+
+]
+
+},
+{
+
+question: "This yoghurt must be ____ it smells foul.",
+
+answers: [
+
+    { text: "A.by", correct: false},
+
+    { text: "B.in", correct: false},
+
+    { text: "C.off", correct: true},
+
+]
+
+},
+{
+
+question: "The newsletter went ____ last night.",
+
+answers: [
+
+    { text: "A.by", correct: false},
+
+    { text: "B.off", correct: false},
+
+    { text: "C.out", correct: true},
+
+]
+
+},
+{
+
+question: "The photocopier has packed ___ again.",
+
+answers: [
+
+    { text: "A.in", correct: true},
+
+    { text: "B.out", correct: false},
+
+    { text: "C.off", correct: false},
+
+]
+
+},
+{
+
+question: "Everyone else realized what was happening, but it took Henry ages to ____ on.",
+
+answers: [
+
+    { text: "A.wake", correct: false},
+
+    { text: "B.pass", correct: false},
+
+    { text: "C.catch", correct: true},
+
+]
+
+},
+{
+
+question: "He agreed to meet me last night, but he stood me ___.",
+
+answers: [
+
+    { text: "A.in", correct: false},
+
+    { text: "B.up", correct: true},
+
+    { text: "C.by", correct: false},
+
+]
+
+},
+{
+
+question: "They came to ___ the house over with a view to buying it.",
+
+answers: [
+
+    { text: "A.look", correct: true},
+
+    { text: "B.keep", correct: false},
+
+    { text: "C.live", correct: false},
+
+]
+
+},
+{
+
+question: "Would it be putting you ____ if I asked you to stay a bit late today?.",
+
+answers: [
+
+    { text: "A.out", correct: true},
+
+    { text: "B.off", correct: false},
+
+    { text: "C.in", correct: false},
+
+]
+
+},
+{
+
+question: "i  didn't mean to ____ on about the party. I just said it without thinking",
+
+answers: [
+
+    { text: "A.look", correct: false},
+
+    { text: "B.set", correct: false},
+
+    { text: "C.let", correct: true},
+
+]
+
+},
+{
+
+question: "*How great is your mercy oh Lord?*.",
+
+answers: [
+
+    { text: "A.Rhetorical", correct: true},
+
+    { text: "B.Synecdoche", correct: false},
+
+    { text: "C.litotes", correct: false},
+
+]
+
+},
+
+    {
+
+        question: "Everyone should realize *life is but deferred death*.",
+
+        answers: [
+
+            { text: "A.Simile", correct: false},
+
+            { text: "B.Hyperbole", correct: false},
+
+            { text: "C.Paradox", correct: true},
+
+        ]
+
+    },
+
+   
+
+    {
+
+        question:".*If you want to live long, drive very fast*",
+
+        answers: [
+
+            { text: "A.Irony", correct: true},
+
+            { text: "B.Oxymoron", correct: false},
+
+            { text: "C.litotes", correct: false},
+
+        ]
+
+    },
+
+    {
+
+        question: ".The Man often tells his wife that he has *an ocean of love for her*",
+
+        answers: [
+
+            { text: "A. Oxymoron", correct: false},
+
+            { text: "B.Simile", correct: false},
+
+            { text: "C.Hyperbole", correct: true},
+
+        ]
+
+    },
+
+    
+
+    {
+
+        question: ". Desmond is a speaker of *no little ability*",
+
+        answers: [
+
+            { text: "A.Oxymoron", correct: false},
+
+            { text: "B.Hyperbole", correct: false},
+
+            { text: "C.litotes", correct: true},
+
+        ]
+
+    },
+
+    {
+
+        question: ".We have a *slim chance* of winning the game",
+
+        answers: [
+
+            { text: "A.Simile", correct: false},
+
+            { text: "B.Metarphor", correct: true},
+
+            { text: "C.litotes", correct: false},
+
+        ]
+
+    },
+
+    {
+
+        question: ".*The latest book of the author spoke* of his proficiency",
+
+        answers: [
+
+            { text: "Metonymy", correct: false},
+
+            { text: "Personification", correct: true},
+
+            { text: "Synecdoche", correct: false},
+
+        ]
+
+    },
+
+    {
+
+        question: "*How great is your mercy oh Lord?*.",
+
+        answers: [
+
+            { text: "A.Rhetorical", correct: true},
+
+            { text: "B.Synecdoche", correct: false},
+
+            { text: "C.litotes", correct: false},
+
+        ]
+
+    },
+
+    {
+
+        question: ". The host invited *so many queens of the night* to the party",
+
+        answers: [
+
+            { text: "A.Metonymy", correct: false},
+
+            { text: "B.Euphemism", correct: true},
+
+            { text: "C.Oxymoron", correct: false},
+
+        ]
+
+    },
+
+    {
+
+        question: ". Uneasy lies *the head* that wears a crown",
+
+        answers: [
+
+            { text: "A.Litotes", correct: false},
+
+            { text: "B.Synecdoche", correct: true},
+
+            { text: "C.Metarphor", correct: false},
+
+        ]
+
+    }
+
+];
+
+
+
+const questionElement = document.getElementById("question");
+
+const answerButtons = document.getElementById("answer-buttons");
+
+const nextButton = document.getElementById("next-btn");
+
+const resetButton = document.getElementById("clear-btn");
+
+const st3 = document.getElementById("st");
+
+const cl3 = document.getElementById("cl");
+
+const printButton = document.getElementById("print-btn");
+
+const number = document.getElementById("number")
+
+let currentQuestionIndex = 0;
+
+let score = 0;
+
+
+
+function startQuiz(){
+
+    currentQuestionIndex = 0;
+
+    score = 0;
+
+    nextButton.innerHTML = "Next";
+
+    showQuestion();
+
+}
+
+
+
+// Set the date we're counting down to
+
+var countDownDate = new Date(Date.now() + (20 * 60 * 1000)).getTime();
+
+
+
+// Update the count down every 1 second
+
+var x = setInterval(function() {
+
+
+
+  // Get today's date and time
+
+  var now = new Date().getTime();
+
+    
+
+  // Find the distance between now and the count down date
+
+  var distance = countDownDate - now;
+
+    
+
+  // Time calculations for days, hours, minutes and seconds
+
+  var days = Math.floor(distance / (1000 * 60 * 60 * 24));
+
+  var hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+
+  var minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+
+  var seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+    
+
+  // Output the result in an element with id="demo"
+
+  document.getElementById("demo").innerHTML = hours + "0:"
+
+  + minutes + ":" + seconds + "";
+
+    
+
+  // If the count down is over, write some text 
+
+  if (distance < 0) {
+
+    clearInterval(x);
+
+    document.getElementById("demo").innerHTML = "EXPIRED";
+
+    showScore();
+
+
+
+  }
+
+}, 1000);
+
+
+
+function showQuestion(){
+
+    resetState();
+
+    let currentQuestion = questions[currentQuestionIndex];
+
+    let questionNo = currentQuestionIndex + 1;
+
+    
+
+    questionElement.innerHTML = questionNo + " " + currentQuestion.question;
+
+    number.innerHTML = questionNo + " ";
+
+    
+
+  
+
+    currentQuestion.answers.forEach(answer => {                            
+
+        const button = document.createElement("button");
+
+        button.innerHTML = answer.text;
+
+        button.classList.add("btn");
+
+        answerButtons.appendChild(button);
+
+        if(answer.correct){
+
+            button.dataset.correct = answer.correct;
+
+        }
+
+        button.addEventListener("click",selectAnswer);                     
+
+    });
+
+}
+
+
+function resetState(){
+
+    nextButton.style.display = "none";
+
+   while(answerButtons.firstChild){
+
+        answerButtons.removeChild(answerButtons.firstChild);    
+
+    } 
+
+}
+
+
+function selectAnswer(e){
+
+    const selectedBtn = e.target;
+
+    const isCorrect = selectedBtn.dataset.correct === "true";
+
+    if(isCorrect){
+
+        selectedBtn.classList.add("correct");
+
+        score++;
+
+    }else{
+
+        selectedBtn.classList.add("incorrect");
+
+    }
+
+    Array.from(answerButtons.children).forEach(button => {
+
+        if(button.dataset.correct=== "true"){
+
+            button.classList.add("correct");
+
+        }
+
+        button.disabled = true;
+
+    });
+
+    nextButton.style.display = "block";
+
+}
+//Save data to local storage
+function myfunc() {
+    //event.preventDefault();
+    st.value;
+    cl.value;
+    score;
+
+    
+
+    localStorage.setItem('Name3', st.value);
+    localStorage.setItem('Class3', cl.value);
+    localStorage.setItem('Score3', score);
+    alert('Your result has been stored in the archive');
+    window.location.href ="subjectjs3.html";
+}
+
+
+function showScore(){
+
+    resetState();
+
+    clearInterval(x);
+
+    questionElement.innerHTML = `Congratulations ${st.value}, you scored ${score} out of ${questions.length}!`;
+
+    nextButton.innerHTML = "Next Student";
+
+    resetButton.style.display = "block";
+
+    printButton.style.display = "block";
+
+
+
+
+
+}
+
+
+
+function handleNextButton(){
+
+    currentQuestionIndex++;
+
+    if(currentQuestionIndex < questions.length){
+
+        showQuestion()
+
+    }else{
+
+        showScore();
+
+    }
+
+}
+
+
+
+
+nextButton.addEventListener("click",()=>{
+
+    if(currentQuestionIndex < questions.length){
+
+        handleNextButton();
+
+    }else{
+
+        startQuiz();
+
+    }
+
+});
+
+startQuiz();
+
+</script>
+<marquee style='color: white; background-color: blue;'>Contact AbdulGafar Tutorpoint @ +2348137649542 for more fantastic Web Designs</marquee>
+
+</p>
+
+</body>
+
+</html>
