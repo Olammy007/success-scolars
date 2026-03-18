@@ -1,0 +1,1304 @@
+<!DOCTYPE html>
+
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <title>AbdulGafar Awesome ICT Exam</title>
+
+<style>
+
+* {
+
+    margin: 0;
+
+    padding: 0;
+
+    font-family: 'Poppins',sans-seriff;
+
+    box-sizing: border-box;
+
+}
+
+body{
+
+    background: orange;
+
+}
+
+.app{
+
+    background: lightgreen;
+
+    width: 90%;
+
+    max-width: 600px;
+
+    margin: 100px auto 0;
+
+    border: 6px solid brown; 
+
+    border-radius: 10px;
+
+    padding: 30px;
+
+}
+
+.app h1{
+
+    font-weight: 25px;
+
+    color: #001e4d;
+
+    font-weight: 600;
+
+    border-bottom: 1px solid #333;
+
+    padding-bottom: 30px;
+
+    text-align: center;
+
+}
+
+.quiz{
+
+    padding: 20px 0;
+
+}
+
+.quiz h2{
+
+    font-size: 18px;
+
+    color: #001e4d;
+
+    font-weight: 600;
+
+}
+
+.btn{
+
+    background: #fff;
+
+    color: #222;
+
+    font-weight: 500;
+
+    width: 100%;
+
+    border: 1px solid #222;
+
+    padding: 10px;
+
+    margin: 10px 0;
+
+    text-align: left;
+
+    border-radius: 4px;
+
+    cursor: pointer;
+
+    transition: all 0.3s;
+
+}
+
+.btn:hover:not([disabled]){
+
+    background: #222;
+
+    color: #fff;
+
+}
+
+.btn:disabled{
+
+    cursor: no-drop;
+
+}
+
+#next-btn{
+
+    background: #001e4d;
+
+    color: #fff;
+
+    font-weight: 500;
+
+    width: 150px;
+
+    border: 0;
+
+    padding: 10px;
+
+    margin: 20px auto 0;
+
+    border-radius: 4px;
+
+    cursor: pointer;
+
+    display: none;
+
+}
+
+.correct{
+
+    background: #9aeabc;
+
+}
+
+.incorrect{
+
+    background: #ff9393;
+
+}
+
+.b{
+
+    display: flex;
+
+    background: #001e4d;
+
+    gap: 80px;
+
+    justify-content: center;
+
+    align-items: center;
+
+    align-content: center;
+
+}
+
+.b button{
+
+    background-color: purple;
+
+    color: white;
+
+}
+
+#st{
+
+    font: 0.7em sans-serif;
+
+    font-weight: bold;
+
+}
+
+#cl{
+
+    font: 0.7em sans-serif;
+
+    font-weight: bold;
+
+}
+
+</style>
+
+</head>
+
+<body>
+
+<div class="app">
+
+    <h1><img src="logo2.png" width="100" height="100" align="left">AbdulGafar TutorPoint Periodic CBT Evaluation</h1>
+
+<h3 align="center">
+
+<form >
+
+Subject:<input type="text" id="st" name="uname"/>
+
+</form>
+
+Class:<input type="text" id="cl" class="uclass"/>
+
+<br/>
+
+<div class="container">
+
+<h5>Time Left<br> <span id="demo"></span></h5>
+
+<h5 align = "left">(<span id="number">0</span> of 50)</h5></div>
+
+</h3>
+
+    <div class="quiz">
+
+        <h2 id="question">Question goes here</h2>
+
+        <div id="answer-buttons">
+
+            <button class="btn">Answer 1</button>
+
+            <button class="btn">Answer 2</button>
+
+            <button class="btn">Answer 3</button>
+
+            <button class="btn">Answer 4</button>
+
+        </div>
+
+           <button id="next-btn">Next</button>
+
+   <div class="b">
+
+         <button hidden id="clear-btn" onclick="location.reload()">Reset</button>
+
+         <button hidden id="print-btn" onclick="myfunc()">Submit</button>
+
+   </div>
+
+<script>
+
+const questions = [
+{
+
+question: ".Given that the total fixed cost is N1000, total variable cost N2500 and output,100 units. Find the average total cost of producing 1 unit",
+
+answers: [
+
+    { text: "A.N30", correct: false},
+
+    { text: "B.N35", correct: true},
+
+    { text: "C.N60", correct: false},
+
+]
+
+},
+
+{
+
+question: "Cost of raw materials in production is an example of ___.",
+
+answers: [
+
+    { text: "A.Marginal cost", correct: false},
+
+    { text: "B.Fixed cost", correct: false},
+
+    { text: "C.Varaiable cost", correct: true},
+
+]
+
+},
+
+
+
+{
+
+question:".In a small scale business, the fixed cost is N5000, variable cost is N15000 and the output is 500 units. What will be the unit cost of the goods?",
+
+answers: [
+
+    { text: "A.N40", correct: true},
+
+    { text: "B.N60", correct: false},
+
+    { text: "C.N80", correct: false},
+
+]
+
+},
+
+{
+
+question: ".The generally accepted definition of economics was given by ___",
+
+answers: [
+
+    { text: "A. Adam Smith", correct: false},
+
+    { text: "B.Alfred Marshall", correct: false},
+
+    { text: "C.Lionel Robbins", correct: true},
+
+]
+
+},
+
+
+
+{
+
+question: ".Land refers to all forms of natural resources that can attract the payment of ____",
+
+answers: [
+
+    { text: "A.Interest", correct: false},
+
+    { text: "B.Royalties", correct: true},
+
+    { text: "C.Wages", correct: false},
+
+]
+
+},
+
+{
+
+question: ".The factor of production that coordinates other factors of production is",
+
+answers: [
+
+    { text: "A.Entrepreneur", correct: true},
+
+    { text: "B.Capital", correct: false},
+
+    { text: "C.Labour", correct: false},
+
+]
+
+},
+
+{
+
+question: ".In what year was the land use decree promulgated?",
+
+answers: [
+
+    { text: "1965", correct: false},
+
+    { text: "1978", correct: true},
+
+    { text: "1980", correct: false},
+
+]
+
+},
+
+{
+
+question: "When the marginal revenue is equals the marginal cost, then the ___.",
+
+answers: [
+
+    { text: "A. Profit is maximized", correct: true},
+
+    { text: "B. Loss is minimized", correct: false},
+
+    { text: "C.Profit is equal to zero", correct: false},
+
+]
+
+},
+{
+
+question: " Investment and saving are respectively__^.",
+
+answers: [
+
+    { text: "Income and wealth", correct: false},
+
+    { text: "B.Injection and leakages", correct: true},
+
+    { text: " leakage and injection", correct: false},
+
+]
+
+},
+{
+
+question: "Asian Tigers refer to all the following countries EXCEPT.",
+
+answers: [
+
+    { text: "A. Hong Kong", correct: false},
+
+    { text: "B.Singapore", correct: false},
+
+    { text: "C.Japan", correct:true},
+
+]
+
+},
+{
+
+question: "The Japanese Miracle means ___.",
+
+answers: [
+
+    { text: " The economic downturn experienced by Japan", correct: false},
+
+    { text: "B.The wonder seen by Japan", correct: false},
+
+    { text: "the economic growth Japan experienced after the devastation of World War 11", correct: true},
+
+]
+
+},
+{
+
+question: "The Asian Tigers refer to the asian countries  that underwent  rapid accelerated Economic growth, these countries are ___ in number.___.",
+
+answers: [
+
+    { text: "A.four ", correct: true},
+
+    { text: "B.Ten", correct: false},
+
+    { text: "C.Fifteen", correct: false},
+
+]
+
+},
+{
+
+question: "A condition which  adversely affects expansion of production is ___.",
+
+answers: [
+
+    { text: "A.Effective management", correct: false},
+
+    { text: "B.Limited size of the market", correct: true},
+
+    { text: "C.Increased profit prospects", correct: false},
+
+]
+
+},
+{
+
+question: "External economies occur when ___.",
+
+answers: [
+
+    { text: "A.Firms comprising an industry are concentrated in one area", correct: true},
+
+    { text: "B. Industries are scattered all around", correct: false},
+
+    { text: "C.A firm decides to expand", correct: false},
+
+]
+
+},
+{
+
+question: "One of  the  advantages of large scale production is that ___.",
+
+answers: [
+
+    { text: "A.The demand for  a firm's products becomes localized", correct: false},
+
+    { text: "B.There is a rise in the cost of administration", correct: false},
+
+    { text: "C.The firm can use labour-saving machinery", correct: true},
+
+]
+
+},
+{
+
+question: "Despite the benefits large firms enjoy,  it could be limited by the ___.",
+
+answers: [
+
+    { text: "A.Desire to make maximum profit", correct: false},
+
+    { text: "B.Extent of the market", correct: true},
+
+    { text: "C. Growth of specialisation", correct: false},
+
+]
+
+},
+{
+
+question: "Division of labour is greatly limited by___.",
+
+answers: [
+
+    { text: "A.The extent of the market", correct: true},
+
+    { text: "B.Its resultant monotony of work", correct: false},
+
+    { text: "C. Its associated decline in craftsmanship", correct: false},
+
+]
+
+},
+{
+
+question: "Division of labour leads to ___.",
+
+answers: [
+
+    { text: "A.Improved craftsmanship ", correct: false},
+
+    { text: "B.Increased in the cost of goods", correct: false},
+
+    { text: "C.The labour of standardized goods", correct: true},
+
+]
+
+},
+{
+
+question: "The benefits  that results from concentrating similar firms in an area is referred to as ___.",
+
+answers: [
+
+    { text: "A.Internal diseconomies of scale", correct: false},
+
+    { text: "B.External economies of scale", correct: true},
+
+    { text: "C.External diseconomies of scale", correct: false},
+
+]
+
+},
+{
+
+question: "An entrepreneur is  encouraged to  adopt division  of labour in production because it ___.",
+
+answers: [
+
+    { text: "A.Leads to Increased outputand lower cost of production", correct: true},
+
+    { text: "B.Brings about equal cost and employment opportunities", correct: false},
+
+    { text: "C.Provided more employment opportunities", correct: false},
+
+]
+
+},
+{
+
+question: "A large firm may experience diseconomies of scale if there is___.",
+
+answers: [
+
+    { text: "A.Employment of more specialists", correct: false},
+
+    { text: "B.Decrease in the cost of production", correct: false},
+
+    { text: "C.Difficulty in coordinating decisions", correct: true},
+
+]
+
+},
+{
+
+question: "The Factor of  production which takes the initiative in combining resources for production is known as___.",
+
+answers: [
+
+    { text: "A.Capital", correct: false},
+
+    { text: "B.Entrepreneur", correct: true},
+
+    { text: "C.Labour", correct: false},
+
+]
+
+},
+{
+
+question: "Which of the following is not an example of circulating capital?.",
+
+answers: [
+
+    { text: "A.Machinery ", correct: true},
+
+    { text: "B.Money", correct: false},
+
+    { text: "C.Raw materials", correct: false},
+
+]
+
+},
+{
+
+question: "Quasi-rent refers to ___.",
+
+answers: [
+
+    { text: "C.Payment made on acquisition of a firm's premises", correct: false},
+
+    { text: "C.Returns in investment", correct: false},
+
+    { text: "C.Payment made on any factor of production that is temporarily fixed in supply", correct: true},
+
+]
+
+},
+{
+
+question: "Which of the following best describes capital as a factor of production?.",
+
+answers: [
+
+    { text: "A.Resources used in training labour.", correct: false},
+
+    { text: "B.A stock of physical assets used for production", correct: true},
+
+    { text: "C.Natural resources found everywhere", correct: false},
+
+]
+
+},
+{
+
+question: " Land is often different from other factors of production because it ___.",
+
+answers: [
+
+    { text: "A. Is owned by individuals", correct: false},
+
+    { text: "B.Constitutes one-third of the entire world", correct: false},
+
+    { text: "C.Is a free gift of nature", correct: true},
+
+]
+
+},
+{
+
+question: "To the economist,  a stock of goods existing at  a particular time and conforming to certain requirements such as having utility,  money value and being limited in supply,  is known as___.",
+
+answers: [
+
+    { text: "A.Wealth", correct: true},
+
+    { text: "B.Consumer goods", correct: false},
+
+    { text: "C.Commercial goods", correct: false},
+
+]
+
+},
+{
+
+question: "The necessary condition for a firm to be in equilibrium is that the marginal  revenue is __.",
+
+answers: [
+
+    { text: "A.Greater than the marginal cost", correct: false},
+
+    { text: "B.Equal to the marginal cost", correct: true},
+
+    { text: "C.Equal to the average cost", correct: false},
+
+]
+
+},
+{
+
+question: "Patents are  examples of___.",
+
+answers: [
+
+    { text: "A.Legal barriers to entry", correct: true},
+
+    { text: "B.Illegal barrier to entry", correct: false},
+
+    { text: "C.Natural barriers to entry", correct: false},
+
+]
+
+},
+{
+
+question: "The monopolist can determine ___.",
+
+answers: [
+
+    { text: "A.Output", correct: false},
+
+    { text: "B.Price", correct: false},
+
+    { text: "C.Price or output", correct: true},
+
+]
+
+},
+{
+
+question: "Which of the following is obtainable in a perfect market?.",
+
+answers: [
+
+    { text: "A.MR < P", correct: false},
+
+    { text: "B.P = MR = MC", correct: true},
+
+    { text: "C.P= MR < AR", correct: false},
+
+]
+
+},
+{
+
+question: " For a monopolist, the average revenue(R) curve is ___.",
+
+answers: [
+
+    { text: "A.Above the marginal revenue curve", correct: true},
+
+    { text: "B.Same as marginal cost curve ", correct: false},
+
+    { text: "C.Above the total cost curve.", correct: false},
+
+]
+
+},
+{
+
+question: "A perfect market has all the following features EXCEPT___.",
+
+answers: [
+
+    { text: "A.The commodities bought an sold are homogeneous", correct: false},
+
+    { text: "B.There is a free entry and exit", correct: false},
+
+    { text: "C.There are many buyers and few sellers", correct: true},
+
+]
+
+},
+{
+
+question: "A market structure , where profit is maximized,when marginal cost,maginal revenues and price are equal is known as __.",
+
+answers: [
+
+    { text: "A.Monopoly", correct: false},
+
+    { text: "B.Oligopoly", correct: false},
+
+    { text: "C.Perfect competition", correct: true},
+
+]
+
+},
+{
+
+question: "In determining costs, economists consider __.",
+
+answers: [
+
+    { text: "A.Explicit cost only", correct: false},
+
+    { text: "B.Implicit costonly", correct: false},
+
+    { text: "C.Implicit and explicit costs", correct: true},
+
+]
+
+},
+{
+
+question: "The long run is a period when __.",
+
+answers: [
+
+    { text: "A.All factors become variables", correct: true},
+
+    { text: "B.The firm will cease to exist", correct: false},
+
+    { text: "C.Only the fixed factor can be altered", correct: false},
+
+]
+
+},
+{
+
+question: "At what stage of production should a firm shut down? When ___.",
+
+answers: [
+
+    { text: "A.AVC = ATC", correct: false},
+
+    { text: "B.AVC > Price", correct: true},
+
+    { text: "C.AVC < Price", correct: false},
+
+]
+
+},
+{
+
+question: "The movement of a worker from one grade to another within the same industry is a form of mobility of labour which is.",
+
+answers: [
+
+    { text: "A.Horizontal", correct: false},
+
+    { text: "B.Vertical", correct: true},
+
+    { text: "C.Parallel", correct: false},
+
+]
+
+},
+{
+
+question: "The Production Possibility Curve (PPC) indicates that as more of one good is produced ___.",
+
+answers: [
+
+    { text: "A.The same quantity of other good is produced", correct: false},
+
+    { text: "B.More of other good is produced", correct: false},
+
+    { text: "C.less of the other good is produced ", correct: true},
+
+]
+
+},
+{
+
+question: "Points outside a production possibility curve indicate ___.",
+
+answers: [
+
+    { text: "A.Unattainable production level", correct: true},
+
+    { text: "B.Optimum production level", correct: false},
+
+    { text: "C.Inefficient but attainable production level", correct: false},
+
+]
+
+},
+{
+
+question: "An outward shift of the production possibility curve shows that ___.",
+
+answers: [
+
+    { text: "A.Factors of production are moving outwards", correct: false},
+
+    { text: "B.Resources are underutilized", correct: false},
+
+    { text: "C.Economic growth has taken place", correct: true},
+
+]
+
+},
+{
+
+question: "When all factors inputs are doubled the production possibility curve will ___.",
+
+answers: [
+
+    { text: "A.Shift from righ to left ", correct: false},
+
+    { text: "B.Shift from left to right", correct: true},
+
+    { text: "C.shift from left to right and return to its original position", correct: false},
+
+]
+
+},
+{
+
+question: "Which of the following will increase the demand for labour ___.",
+
+answers: [
+
+    { text: "A.Labour demand for output", correct: false},
+
+    { text: "B.Increased wage rate", correct: false},
+
+    { text: "C.Low wage rate", correct: true},
+
+]
+
+},
+{
+
+question: "When a worker changes from one type of job to another,it is called___.",
+
+answers: [
+
+    { text: "A.Geographical mobility of labour", correct: false},
+
+    { text: "B.Occupational mobility of labour", correct: true},
+
+    { text: "C.Immobility of labour", correct: false},
+
+]
+
+},
+{
+
+question: "Interaction of supply and demand for labour determines ___.",
+
+answers: [
+
+    { text: "A.Profit", correct: false},
+
+    { text: "B.Production", correct: false},
+
+    { text: "C.Wage", correct: true},
+
+]
+
+},
+{
+
+question: "The power of trade unions may be weakened when there is  ___.",
+
+answers: [
+
+    { text: "A.Over-population", correct: true},
+
+    { text: "B.Optimum population ", correct: false},
+
+    { text: "C.A weak government in power", correct: false},
+
+]
+
+},
+{
+
+question: "The magnitude of the national income of a country depends on all the following except the ___.",
+
+answers: [
+
+    { text: "A.Available resources", correct: false},
+
+    { text: "B.Level of technical know-how ", correct: false},
+
+    { text: "C.Mobility of labour", correct: true},
+
+]
+
+},
+{
+
+question: "The equilibrium position of a firm is attained___.",
+
+answers: [
+
+    { text: "A.When MC = MR", correct: true},
+
+    { text: "B.When ATC = AVC", correct: false},
+
+    { text: "C.When AC = AR", correct: false},
+
+]
+
+},
+
+{
+
+question: ".The act of combining factor inputs in order to obtain specific output is known as ___",
+
+answers: [
+
+    { text: "A.Factor procurement", correct: false},
+
+    { text: "B.Industrialization", correct: false},
+
+    { text: "C.Production", correct: true},
+
+]
+
+},
+
+{
+
+question: ". Freedom of consumption and production are characteristics of",
+
+answers: [
+
+    { text: "A.Socialism", correct: false},
+
+    { text: "B.Capitalism", correct: true},
+
+    { text: "C.Communism", correct: false},
+
+]
+
+}
+
+    
+
+];
+
+
+
+const questionElement = document.getElementById("question");
+
+const answerButtons = document.getElementById("answer-buttons");
+
+const nextButton = document.getElementById("next-btn");
+
+const resetButton = document.getElementById("clear-btn");
+
+const st8 = document.getElementById("st");
+
+const cl8 = document.getElementById("cl");
+
+const printButton = document.getElementById("print-btn");
+
+const number = document.getElementById("number")
+
+let currentQuestionIndex = 0;
+
+let score = 0;
+
+
+
+function startQuiz(){
+
+    currentQuestionIndex = 0;
+
+    score = 0;
+
+    nextButton.innerHTML = "Next";
+
+    showQuestion();
+
+}
+
+
+
+// Set the date we're counting down to
+
+var countDownDate = new Date(Date.now() + (20 * 60 * 1000)).getTime();
+
+
+
+// Update the count down every 1 second
+
+var x = setInterval(function() {
+
+
+
+  // Get today's date and time
+
+  var now = new Date().getTime();
+
+    
+
+  // Find the distance between now and the count down date
+
+  var distance = countDownDate - now;
+
+    
+
+  // Time calculations for days, hours, minutes and seconds
+
+  var days = Math.floor(distance / (1000 * 60 * 60 * 24));
+
+  var hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+
+  var minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+
+  var seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+    
+
+  // Output the result in an element with id="demo"
+
+  document.getElementById("demo").innerHTML = hours + "0:"
+
+  + minutes + ":" + seconds + "";
+
+    
+
+  // If the count down is over, write some text 
+
+  if (distance < 0) {
+
+    clearInterval(x);
+
+    document.getElementById("demo").innerHTML = "EXPIRED";
+
+    showScore();
+
+
+
+  }
+
+}, 1000);
+
+
+
+function showQuestion(){
+
+    resetState();
+
+    let currentQuestion = questions[currentQuestionIndex];
+
+    let questionNo = currentQuestionIndex + 1;
+
+    
+
+    questionElement.innerHTML = questionNo + " " + currentQuestion.question;
+
+    number.innerHTML = questionNo + " ";
+
+    
+
+  
+
+    currentQuestion.answers.forEach(answer => {                            
+
+        const button = document.createElement("button");
+
+        button.innerHTML = answer.text;
+
+        button.classList.add("btn");
+
+        answerButtons.appendChild(button);
+
+        if(answer.correct){
+
+            button.dataset.correct = answer.correct;
+
+        }
+
+        button.addEventListener("click",selectAnswer);                     
+
+    });
+
+}
+
+
+
+
+
+function resetState(){
+
+    nextButton.style.display = "none";
+
+   while(answerButtons.firstChild){
+
+        answerButtons.removeChild(answerButtons.firstChild);    
+
+    } 
+
+}
+
+
+
+
+
+
+
+function selectAnswer(e){
+
+    const selectedBtn = e.target;
+
+    const isCorrect = selectedBtn.dataset.correct === "true";
+
+    if(isCorrect){
+
+        selectedBtn.classList.add("correct");
+
+        score++;
+
+    }else{
+
+        selectedBtn.classList.add("incorrect");
+
+    }
+
+    Array.from(answerButtons.children).forEach(button => {
+
+        if(button.dataset.correct=== "true"){
+
+            button.classList.add("correct");
+
+        }
+
+        button.disabled = true;
+
+    });
+
+    nextButton.style.display = "block";
+
+}
+//Save data to local storage
+function myfunc() {
+    //event.preventDefault();
+    st.value;
+    cl.value;
+    score;
+
+    
+
+    localStorage.setItem('Name8', st.value);
+    localStorage.setItem('Class8', cl.value);
+    localStorage.setItem('Score8', score);
+    alert('Your result has been stored in the archive');
+    window.location.href ="subjectss2.html";
+}
+
+
+function showScore(){
+
+    resetState();
+
+    clearInterval(x);
+
+    questionElement.innerHTML = `Congratulations ${st.value}, you scored ${score} out of ${questions.length}!`;
+
+    nextButton.innerHTML = "Next Student";
+
+    resetButton.style.display = "block";
+
+    printButton.style.display = "block";
+
+
+
+
+
+}
+
+
+
+function handleNextButton(){
+
+    currentQuestionIndex++;
+
+    if(currentQuestionIndex < questions.length){
+
+        showQuestion()
+
+    }else{
+
+        showScore();
+
+    }
+
+}
+
+
+
+
+
+
+
+nextButton.addEventListener("click",()=>{
+
+    if(currentQuestionIndex < questions.length){
+
+        handleNextButton();
+
+    }else{
+
+        startQuiz();
+
+
+
+    }
+
+});
+
+startQuiz();
+
+</script>
+<marquee style='color: white; background-color: blue;'>Contact AbdulGafar Tutorpoint @ +2348137649542 for more fantastic Web Designs</marquee>
+</p>
+
+</body>
+
+</html>

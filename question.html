@@ -1,0 +1,1262 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body{
+            min-height: 800px;
+            border: 8px solid black;
+            background: url(logo2.jpg);
+            background-repeat: repeat;
+        }
+        h1{
+            color: white;
+            font: 3em sans-serif;
+            background: green;
+        }
+        div{
+            display: flex;
+            gap: 5px;
+            flex-wrap: wrap;
+            justify-content: center;
+            align-items: center;
+            align-content: center;
+            background: wheat;
+            width: 90%;
+            max-width: 900px;
+            margin: 100px auto 0;
+            border: 6px solid black; 
+            border-radius: 10px;
+            padding: 30px;
+        }
+        div input{
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 50px;
+            width: 800px;
+            color: yellow;
+            background-color: rgb(255, 0, 149);
+            font-size: 20pt;
+            border-radius: 10px;
+        }
+        </style>
+</head>
+<body>
+     <h1 align="center" color: orange> Rock Foundation Tutorial Exam Portal</h1>
+    <form onsubmit="myF(event)">
+        <div>
+            <label>1</label>
+            <input type="text" id="Q1" placeholder="question one" required />
+        </div>
+        <div>
+            <label>A</label>
+            <input type="text" id="G1A" placeholder="correct" required />
+        </div>
+        <div>
+            <label>B</label>
+            <input type="text" id="G1B" placeholder="wrong" required />
+        </div>
+        <div>
+            <label>C</label>
+            <input type="text" id="G1C" placeholder="wrong" required />
+        </div>
+        <div>
+            <label>D</label>
+            <input type="text" id="G1D" placeholder="wrong" required />
+        </div>
+        <div>
+            <label>2</label>
+            <input type="text" id="Q2" placeholder="question two" required />
+        </div>
+        <div>
+            <label>A</label>
+            <input type="text" id="G2A" placeholder="correct" required />
+        </div>
+        <div>
+            <label>B</label>
+            <input type="text" id="G2B" placeholder="wrong" required />
+        </div>
+        <div>
+            <label>C</label>
+            <input type="text" id="G2C" placeholder="wrong" required />
+        </div>
+        <div>
+            <label>D</label>
+            <input type="text" id="G2D" placeholder="wrong" required />
+        </div>
+        <div>
+            <label>3</label>
+            <input type="text" id="Q3" placeholder="question three" required />
+        </div>
+        <div>
+            <label>A</label>
+            <input type="text" id="G3A" placeholder="wrong" required />
+        </div>
+        <div>
+            <label>B</label>
+            <input type="text" id="G3B" placeholder="correct" required />
+        </div>
+        <div>
+            <label>C</label>
+            <input type="text" id="G3C" placeholder="wrong" required />
+        </div>
+        <div>
+            <label>D</label>
+            <input type="text" id="G3D" placeholder="wrong" required />
+        </div>
+        <div>
+            <label>4</label>
+            <input type="text" id="Q4" placeholder="questionfour" required />
+        </div>
+        <div>
+            <label>A</label>
+            <input type="text" id="G4A" placeholder="wrong" required />
+        </div>
+        <div>
+            <label>B</label>
+            <input type="text" id="G4B" placeholder="wrong" required />
+        </div>
+        <div>
+            <label>C</label>
+            <input type="text" id="G4C" placeholder="correct" required />
+        </div>
+        <div>
+            <label>D</label>
+            <input type="text" id="G4D" placeholder="wrong" required />
+        </div>
+        <div>
+            <label>5</label>
+            <input type="text" id="Q5" placeholder="questionfive" required />
+        </div>
+        <div>
+            <label>A</label>
+            <input type="text" id="G5A" placeholder="wrong" required />
+        </div>
+        <div>
+            <label>B</label>
+            <input type="text" id="G5B" placeholder="correct" required />
+        </div>
+        <div>
+            <label>C</label>
+            <input type="text" id="G5C" placeholder="wrong" required />
+        </div>
+        <div>
+            <label>D</label>
+            <input type="text" id="G5D" placeholder="wrong" required />
+        </div>
+        <div>
+            <label>6</label>
+            <input type="text" id="Q6" placeholder="question six" required />
+        </div>
+        <div>
+            <label>A</label>
+            <input type="text" id="G6A" placeholder="wrong" required />
+        </div>
+        <div>
+            <label>B</label>
+            <input type="text" id="G6B" placeholder="wrong" required />
+        </div>
+        <div>
+            <label>C</label>
+            <input type="text" id="G6C" placeholder="wrong" required />
+        </div>
+        <div>
+            <label>D</label>
+            <input type="text" id="G6D" placeholder="correct" required />
+        </div>
+        <div>
+            <label>7</label>
+            <input type="text" id="Q7" placeholder="questionseven" required />
+        </div>
+        <div>
+            <label>A</label>
+            <input type="text" id="G7A" placeholder="wrong" required />
+        </div>
+        <div>
+            <label>B</label>
+            <input type="text" id="G7B" placeholder="wrong" required />
+        </div>
+        <div>
+            <label>C</label>
+            <input type="text" id="G7C" placeholder="correct" required />
+        </div>
+        <div>
+            <label>D</label>
+            <input type="text" id="G7D" placeholder="wrong" required />
+        </div>
+        <div>
+            <label>8</label>
+            <input type="text" id="Q8" placeholder="questioneight" required />
+        </div>
+        <div>
+            <label>A</label>
+            <input type="text" id="G8A" placeholder="wrong" required />
+        </div>
+        <div>
+            <label>B</label>
+            <input type="text" id="G8B" placeholder="wrong" required />
+        </div>
+        <div>
+            <label>C</label>
+            <input type="text" id="G8C" placeholder="correct" required />
+        </div>
+        <div>
+            <label>D</label>
+            <input type="text" id="G8D" placeholder="wrong" required />
+        </div>
+        <div>
+            <label>9</label>
+            <input type="text" id="Q9" placeholder="questionnine" required />
+        </div>
+        <div>
+            <label>A</label>
+            <input type="text" id="G9A" placeholder="correct" required />
+        </div>
+        <div>
+            <label>B</label>
+            <input type="text" id="G9B" placeholder="wrong" required />
+        </div>
+        <div>
+            <label>C</label>
+            <input type="text" id="G9C" placeholder="wrong" required />
+        </div>
+        <div>
+            <label>D</label>
+            <input type="text" id="G9D" placeholder="wrong" required />
+        </div>
+        <div>
+            <label>10</label>
+            <input type="text" id="Q10" placeholder="questionten" required />
+        </div>
+        <div>
+            <label>A</label>
+            <input type="text" id="G10A" placeholder="wrong" required />
+        </div>
+        <div>
+            <label>B</label>
+            <input type="text" id="G10B" placeholder="wrong" required />
+        </div>
+        <div>
+            <label>C</label>
+            <input type="text" id="G10C" placeholder="wrong" required />
+        </div>
+        <div>
+            <label>D</label>
+            <input type="text" id="G10D" placeholder="correct" required />
+        </div>
+        <div>
+            <label>11</label>
+            <input type="text" id="Q11" placeholder="questioneleven" required />
+        </div>
+        <div>
+            <label>A</label>
+            <input type="text" id="G11A" placeholder="wrong" required />
+        </div>
+        <div>
+            <label>B</label>
+            <input type="text" id="G11B" placeholder="wrong" required />
+        </div>
+        <div>
+            <label>C</label>
+            <input type="text" id="G11C" placeholder="correct" required />
+        </div>
+        <div>
+            <label>D</label>
+            <input type="text" id="G11D" placeholder="wrong" required />
+        </div>
+        <div>
+            <label>12</label>
+            <input type="text" id="Q12" placeholder="questiontwelve" required />
+        </div>
+        <div>
+            <label>A</label>
+            <input type="text" id="G12A" placeholder="wrong" required />
+        </div>
+        <div>
+            <label>B</label>
+            <input type="text" id="G12B" placeholder="correct" required />
+        </div>
+        <div>
+            <label>C</label>
+            <input type="text" id="G12C" placeholder="wrong" required />
+        </div>
+        <div>
+            <label>D</label>
+            <input type="text" id="G12D" placeholder="wrong" required />
+        </div>
+        <div>
+            <label>13</label>
+            <input type="text" id="Q13" placeholder="questionthirteen" required />
+        </div>
+        <div>
+            <label>A</label>
+            <input type="text" id="G13A" placeholder="correct" required />
+        </div>
+        <div>
+            <label>B</label>
+            <input type="text" id="G13B" placeholder="wrong" required />
+        </div>
+        <div>
+            <label>C</label>
+            <input type="text" id="G13C" placeholder="wrong" required />
+        </div>
+        <div>
+            <label>D</label>
+            <input type="text" id="G13D" placeholder="wrong" required />
+        </div>
+        <div>
+            <label>14</label>
+            <input type="text" id="Q14" placeholder="questionfourteen" required />
+        </div>
+        <div>
+            <label>A</label>
+            <input type="text" id="G14A" placeholder="wrong" required />
+        </div>
+        <div>
+            <label>B</label>
+            <input type="text" id="G14B" placeholder="correct" required />
+        </div>
+        <div>
+            <label>C</label>
+            <input type="text" id="G14C" placeholder="wrong" required />
+        </div>
+        <div>
+            <label>D</label>
+            <input type="text" id="G14D" placeholder="wrong" required />
+        </div>
+        <div>
+            <label>15</label>
+            <input type="text" id="Q15" placeholder="questionfiveteen" required />
+        </div>
+        <div>
+            <label>A</label>
+            <input type="text" id="G15A" placeholder="wrong" required />
+        </div>
+        <div>
+            <label>B</label>
+            <input type="text" id="G15B" placeholder="wrong" required />
+        </div>
+        <div>
+            <label>C</label>
+            <input type="text" id="G15C" placeholder="correct" required />
+        </div>
+        <div>
+            <label>D</label>
+            <input type="text" id="G15D" placeholder="wrong" required />
+        </div>
+        <div>
+            <label>16</label>
+            <input type="text" id="Q16" placeholder="questionsixteen" required />
+        </div>
+        <div>
+            <label>A</label>
+            <input type="text" id="G16A" placeholder="wrong" required />
+        </div>
+        <div>
+            <label>B</label>
+            <input type="text" id="G16B" placeholder="wrong" required />
+        </div>
+        <div>
+            <label>C</label>
+            <input type="text" id="G16C" placeholder="wrong" required />
+        </div>
+        <div>
+            <label>D</label>
+            <input type="text" id="G16D" placeholder="correct" required />
+        </div>
+        <div>
+            <label>17</label>
+            <input type="text" id="Q17" placeholder="questionseventeen" required />
+        </div>
+        <div>
+            <label>A</label>
+            <input type="text" id="G17A" placeholder="wrong" required />
+        </div>
+        <div>
+            <label>B</label>
+            <input type="text" id="G17B" placeholder="wrong" required />
+        </div>
+        <div>
+            <label>C</label>
+            <input type="text" id="G17C" placeholder="wrong" required />
+        </div>
+        <div>
+            <label>D</label>
+            <input type="text" id="G17D" placeholder="correct" required />
+        </div>
+        <div>
+            <label>18</label>
+            <input type="text" id="Q18" placeholder="questioneighteen" required />
+        </div>
+        <div>
+            <label>A</label>
+            <input type="text" id="G18A" placeholder="wrong" required />
+        </div>
+        <div>
+            <label>B</label>
+            <input type="text" id="G18B" placeholder="correct" required />
+        </div>
+        <div>
+            <label>C</label>
+            <input type="text" id="G18C" placeholder="wrong" required />
+        </div>
+        <div>
+            <label>D</label>
+            <input type="text" id="G18D" placeholder="wrong" required />
+        </div>
+        <div>
+            <label>19</label>
+            <input type="text" id="Q19" placeholder="questionnineteen" required />
+        </div>
+        <div>
+            <label>A</label>
+            <input type="text" id="G19A" placeholder="wrong" required />
+        </div>
+        <div>
+            <label>B</label>
+            <input type="text" id="G19B" placeholder="correct" required />
+        </div>
+        <div>
+            <label>C</label>
+            <input type="text" id="G19C" placeholder="wrong" required />
+        </div>
+        <div>
+            <label>D</label>
+            <input type="text" id="G19D" placeholder="wrong" required />
+        </div>
+        <div>
+            <label>20</label>
+            <input type="text" id="Q20" placeholder="questiontewnty" required />
+        </div>
+        <div>
+            <label>A</label>
+            <input type="text" id="G20A" placeholder="correct" required />
+        </div>
+        <div>
+            <label>B</label>
+            <input type="text" id="G20B" placeholder="wrong" required />
+        </div>
+        <div>
+            <label>C</label>
+            <input type="text" id="G20C" placeholder="wrong" required />
+        </div>
+        <div>
+            <label>D</label>
+            <input type="text" id="G20D" placeholder="wrong" required />
+        </div>
+        <div>
+            <label>21</label>
+            <input type="text" id="Q21" placeholder="questiontwentyone" required />
+        </div>
+        <div>
+            <label>A</label>
+            <input type="text" id="G21A" placeholder="correct" required />
+        </div>
+        <div>
+            <label>B</label>
+            <input type="text" id="G21B" placeholder="wrong" required />
+        </div>
+        <div>
+            <label>C</label>
+            <input type="text" id="G21C" placeholder="wrong" required />
+        </div>
+        <div>
+            <label>D</label>
+            <input type="text" id="G21D" placeholder="wrong" required />
+        </div>
+        <div>
+            <label>22</label>
+            <input type="text" id="Q22" placeholder="questionfour" required />
+        </div>
+        <div>
+            <label>A</label>
+            <input type="text" id="G22A" placeholder="wrong" required />
+        </div>
+        <div>
+            <label>B</label>
+            <input type="text" id="G22B" placeholder="wrong" required />
+        </div>
+        <div>
+            <label>C</label>
+            <input type="text" id="G22C" placeholder="correct" required />
+        </div>
+        <div>
+            <label>D</label>
+            <input type="text" id="G22D" placeholder="wrong" required />
+        </div>
+        <div>
+            <label>23</label>
+            <input type="text" id="Q23" placeholder="questionfour" required />
+        </div>
+        <div>
+            <label>A</label>
+            <input type="text" id="G23A" placeholder="wrong" required />
+        </div>
+        <div>
+            <label>B</label>
+            <input type="text" id="G23B" placeholder="wrong" required />
+        </div>
+        <div>
+            <label>C</label>
+            <input type="text" id="G23C" placeholder="wrong" required />
+        </div>
+        <div>
+            <label>D</label>
+            <input type="text" id="G23D" placeholder="correct" required />
+        </div>
+        <div>
+            <label>24</label>
+            <input type="text" id="Q24" placeholder="questionfour" required />
+        </div>
+        <div>
+            <label>A</label>
+            <input type="text" id="G24A" placeholder="wrong" required />
+        </div>
+        <div>
+            <label>B</label>
+            <input type="text" id="G24B" placeholder="wrong" required />
+        </div>
+        <div>
+            <label>C</label>
+            <input type="text" id="G24C" placeholder="correct" required />
+        </div>
+        <div>
+            <label>D</label>
+            <input type="text" id="G24D" placeholder="wrong" required />
+        </div>
+        <div>
+            <label>25</label>
+            <input type="text" id="Q25" placeholder="questionfour" required />
+        </div>
+        <div>
+            <label>A</label>
+            <input type="text" id="G25A" placeholder="wrong" required />
+        </div>
+        <div>
+            <label>B</label>
+            <input type="text" id="G25B" placeholder="wrong" required />
+        </div>
+        <div>
+            <label>C</label>
+            <input type="text" id="G25C" placeholder="correct" required />
+        </div>
+        <div>
+            <label>D</label>
+            <input type="text" id="G25D" placeholder="wrong" required />
+        </div>
+        <div>
+            <label>26</label>
+            <input type="text" id="Q26" placeholder="questionfour" required />
+        </div>
+        <div>
+            <label>A</label>
+            <input type="text" id="G26A" placeholder="correct" required />
+        </div>
+        <div>
+            <label>B</label>
+            <input type="text" id="G26B" placeholder="wrong" required />
+        </div>
+        <div>
+            <label>C</label>
+            <input type="text" id="G26C" placeholder="wrong" required />
+        </div>
+        <div>
+            <label>D</label>
+            <input type="text" id="G26D" placeholder="wrong" required />
+        </div>
+        <div>
+            <label>27</label>
+            <input type="text" id="Q27" placeholder="questionfour" required />
+        </div>
+        <div>
+            <label>A</label>
+            <input type="text" id="G27A" placeholder="wrong" required />
+        </div>
+        <div>
+            <label>B</label>
+            <input type="text" id="G27B" placeholder="wrong" required />
+        </div>
+        <div>
+            <label>C</label>
+            <input type="text" id="G27C" placeholder="correct" required />
+        </div>
+        <div>
+            <label>D</label>
+            <input type="text" id="G27D" placeholder="wrong" required />
+        </div>
+        <div>
+            <label>28</label>
+            <input type="text" id="Q28" placeholder="questionfour" required />
+        </div>
+        <div>
+            <label>A</label>
+            <input type="text" id="G28A" placeholder="wrong" required />
+        </div>
+        <div>
+            <label>B</label>
+            <input type="text" id="G28B" placeholder="wrong" required />
+        </div>
+        <div>
+            <label>C</label>
+            <input type="text" id="G28C" placeholder="wrong" required />
+        </div>
+        <div>
+            <label>D</label>
+            <input type="text" id="G28D" placeholder="correct" required />
+        </div>
+        <div>
+            <label>29</label>
+            <input type="text" id="Q29" placeholder="questionfour" required />
+        </div>
+        <div>
+            <label>A</label>
+            <input type="text" id="G29A" placeholder="wrong" required />
+        </div>
+        <div>
+            <label>B</label>
+            <input type="text" id="G29B" placeholder="correct" required />
+        </div>
+        <div>
+            <label>C</label>
+            <input type="text" id="G29C" placeholder="wrong" required />
+        </div>
+        <div>
+            <label>D</label>
+            <input type="text" id="G29D" placeholder="wrong" required />
+        </div>
+        <div>
+            <label>30</label>
+            <input type="text" id="Q30" placeholder="questionfour" required />
+        </div>
+        <div>
+            <label>A</label>
+            <input type="text" id="G30A" placeholder="correct" required />
+        </div>
+        <div>
+            <label>B</label>
+            <input type="text" id="G30B" placeholder="wrong" required />
+        </div>
+        <div>
+            <label>C</label>
+            <input type="text" id="G30C" placeholder="wrong" required />
+        </div>
+        <div>
+            <label>D</label>
+            <input type="text" id="G30D" placeholder="wrong" required />
+        </div>
+        <div>
+            <label>31</label>
+            <input type="text" id="Q31" placeholder="questionfour" required />
+        </div>
+        <div>
+            <label>A</label>
+            <input type="text" id="G31A" placeholder="wrong" required />
+        </div>
+        <div>
+            <label>B</label>
+            <input type="text" id="G31B" placeholder="wrong" required />
+        </div>
+        <div>
+            <label>C</label>
+            <input type="text" id="G31C" placeholder="correct" required />
+        </div>
+        <div>
+            <label>D</label>
+            <input type="text" id="G31D" placeholder="wrong" required />
+        </div>
+        <div>
+            <label>32</label>
+            <input type="text" id="Q32" placeholder="questionfour" required />
+        </div>
+        <div>
+            <label>A</label>
+            <input type="text" id="G32A" placeholder="wrong" required />
+        </div>
+        <div>
+            <label>B</label>
+            <input type="text" id="G32B" placeholder="wrong" required />
+        </div>
+        <div>
+            <label>C</label>
+            <input type="text" id="G32C" placeholder="correct" required />
+        </div>
+        <div>
+            <label>D</label>
+            <input type="text" id="G32D" placeholder="wrong" required />
+        </div>
+        <div>
+            <label>33</label>
+            <input type="text" id="Q33" placeholder="questionfour" required />
+        </div>
+        <div>
+            <label>A</label>
+            <input type="text" id="G33A" placeholder="wrong" required />
+        </div>
+        <div>
+            <label>B</label>
+            <input type="text" id="G33B" placeholder="wrong" required />
+        </div>
+        <div>
+            <label>C</label>
+            <input type="text" id="G33C" placeholder="wrong" required />
+        </div>
+        <div>
+            <label>D</label>
+            <input type="text" id="G33D" placeholder="correct" required />
+        </div>
+        <div>
+            <label>34</label>
+            <input type="text" id="Q34" placeholder="questionfour" required />
+        </div>
+        <div>
+            <label>A</label>
+            <input type="text" id="G34A" placeholder="wrong" required />
+        </div>
+        <div>
+            <label>B</label>
+            <input type="text" id="G34B" placeholder="correct" required />
+        </div>
+        <div>
+            <label>C</label>
+            <input type="text" id="G34C" placeholder="wrong" required />
+        </div>
+        <div>
+            <label>D</label>
+            <input type="text" id="G34D" placeholder="wrong" required />
+        </div>
+        <div>
+            <label>35</label>
+            <input type="text" id="Q35" placeholder="questionfour" required />
+        </div>
+        <div>
+            <label>A</label>
+            <input type="text" id="G35A" placeholder="wrong" required />
+        </div>
+        <div>
+            <label>B</label>
+            <input type="text" id="G35B" placeholder="correct" required />
+        </div>
+        <div>
+            <label>C</label>
+            <input type="text" id="G35C" placeholder="wrong" required />
+        </div>
+        <div>
+            <label>D</label>
+            <input type="text" id="G35D" placeholder="wrong" required />
+        </div>
+        <div>
+            <label>36</label>
+            <input type="text" id="Q36" placeholder="questionthirtysix" required />
+        </div>
+        <div>
+            <label>A</label>
+            <input type="text" id="G36A" placeholder="correct" required />
+        </div>
+        <div>
+            <label>B</label>
+            <input type="text" id="G36B" placeholder="wrong" required />
+        </div>
+        <div>
+            <label>C</label>
+            <input type="text" id="G36C" placeholder="correct" required />
+        </div>
+        <div>
+            <label>D</label>
+            <input type="text" id="G36D" placeholder="wrong" required />
+        </div>
+        <div>
+            <label>37</label>
+            <input type="text" id="Q37" placeholder="questionfour" required />
+        </div>
+        <div>
+            <label>A</label>
+            <input type="text" id="G37A" placeholder="wrong" required />
+        </div>
+        <div>
+            <label>B</label>
+            <input type="text" id="G37B" placeholder="wrong" required />
+        </div>
+        <div>
+            <label>C</label>
+            <input type="text" id="G37C" placeholder="correct" required />
+        </div>
+        <div>
+            <label>D</label>
+            <input type="text" id="G37D" placeholder="wrong" required />
+        </div>
+        <div>
+            <label>38</label>
+            <input type="text" id="Q38" placeholder="questionfour" required />
+        </div>
+        <div>
+            <label>A</label>
+            <input type="text" id="G38A" placeholder="correct" required />
+        </div>
+        <div>
+            <label>B</label>
+            <input type="text" id="G38B" placeholder="wrong" required />
+        </div>
+        <div>
+            <label>C</label>
+            <input type="text" id="G38C" placeholder="wrong" required />
+        </div>
+        <div>
+            <label>D</label>
+            <input type="text" id="G38D" placeholder="wrong" required />
+        </div>
+        <div>
+            <label>39</label>
+            <input type="text" id="Q39" placeholder="questionthirtynine" required />
+        </div>
+        <div>
+            <label>A</label>
+            <input type="text" id="G39A" placeholder="wrong" required />
+        </div>
+        <div>
+            <label>B</label>
+            <input type="text" id="G39B" placeholder="wrong" required />
+        </div>
+        <div>
+            <label>C</label>
+            <input type="text" id="G39C" placeholder="wrong" required />
+        </div>
+        <div>
+            <label>D</label>
+            <input type="text" id="G39D" placeholder="correct" required />
+        </div>
+        <div>
+            <label>40</label>
+            <input type="text" id="Q40" placeholder="questionforty" required />
+        </div>
+        <div>
+            <label>A</label>
+            <input type="text" id="G40A" placeholder="wrong" required />
+        </div>
+        <div>
+            <label>B</label>
+            <input type="text" id="G40B" placeholder="correct" required />
+        </div>
+        <div>
+            <label>C</label>
+            <input type="text" id="G40C" placeholder="wrong" required />
+        </div>
+        <div>
+            <label>D</label>
+            <input type="text" id="G40D" placeholder="wrong" required />
+        </div>
+        <input type="submit" value="Submit" />
+    </form>
+    <script type="text/javascript">
+    function myF(event) {
+        event.preventDefault();
+            var Q1 = document.getElementById("Q1").value;
+            var G1A = document.getElementById("G1A").value;
+            var G1B = document.getElementById("G1B").value;
+            var G1C = document.getElementById("G1C").value;
+            var G1D = document.getElementById("G1D").value;
+            var Q2 = document.getElementById("Q2").value;
+            var G2A = document.getElementById("G2A").value;
+            var G2B = document.getElementById("G2B").value;
+            var G2C = document.getElementById("G2C").value;
+            var G2D = document.getElementById("G2D").value;
+            var Q3 = document.getElementById("Q3").value;
+            var G3A = document.getElementById("G3A").value;
+            var G3B = document.getElementById("G3B").value;
+            var G3C = document.getElementById("G3C").value;
+            var G3D = document.getElementById("G3D").value;
+            var Q4 = document.getElementById("Q4").value;
+            var G4A = document.getElementById("G4A").value;
+            var G4B = document.getElementById("G4B").value;
+            var G4C = document.getElementById("G4C").value;
+            var G4D = document.getElementById("G4D").value;
+            var Q5 = document.getElementById("Q5").value;
+            var G5A = document.getElementById("G5A").value;
+            var G5B = document.getElementById("G5B").value;
+            var G5C = document.getElementById("G5C").value;
+            var G5D = document.getElementById("G5D").value;
+            var Q6 = document.getElementById("Q6").value;
+            var G6A = document.getElementById("G6A").value;
+            var G6B = document.getElementById("G6B").value;
+            var G6C = document.getElementById("G6C").value;
+            var G6D = document.getElementById("G6D").value;
+            var Q7 = document.getElementById("Q7").value;
+            var G7A = document.getElementById("G7A").value;
+            var G7B = document.getElementById("G7B").value;
+            var G7C = document.getElementById("G7C").value;
+            var G7D = document.getElementById("G7D").value;
+            var Q8 = document.getElementById("Q8").value;
+            var G8A = document.getElementById("G8A").value;
+            var G8B = document.getElementById("G8B").value;
+            var G8C = document.getElementById("G8C").value;
+            var G8D = document.getElementById("G8D").value;
+            var Q9 = document.getElementById("Q9").value;
+            var G9A = document.getElementById("G9A").value;
+            var G9B = document.getElementById("G9B").value;
+            var G9C = document.getElementById("G9C").value;
+            var G9D = document.getElementById("G9D").value;
+            var Q10 = document.getElementById("Q10").value;
+            var G10A = document.getElementById("G10A").value;
+            var G10B = document.getElementById("G10B").value;
+            var G10C = document.getElementById("G10C").value;
+            var G10D = document.getElementById("G10D").value;
+            var Q11 = document.getElementById("Q11").value;
+            var G11A = document.getElementById("G11A").value;
+            var G11B = document.getElementById("G11B").value;
+            var G11C = document.getElementById("G11C").value;
+            var G11D = document.getElementById("G11D").value;
+            var Q12 = document.getElementById("Q12").value;
+            var G12A = document.getElementById("G12A").value;
+            var G12B = document.getElementById("G12B").value;
+            var G12C = document.getElementById("G12C").value;
+            var G12D = document.getElementById("G12D").value;
+            var Q13 = document.getElementById("Q13").value;
+            var G13A = document.getElementById("G13A").value;
+            var G13B = document.getElementById("G13B").value;
+            var G13C = document.getElementById("G13C").value;
+            var G13D = document.getElementById("G13D").value;
+            var Q14 = document.getElementById("Q14").value;
+            var G14A = document.getElementById("G14A").value;
+            var G14B = document.getElementById("G14B").value;
+            var G14C = document.getElementById("G14C").value;
+            var G14D = document.getElementById("G14D").value;
+            var Q15 = document.getElementById("Q15").value;
+            var G15A = document.getElementById("G15A").value;
+            var G15B = document.getElementById("G15B").value;
+            var G15C = document.getElementById("G15C").value;
+            var G15D = document.getElementById("G15D").value;
+            var Q16 = document.getElementById("Q16").value;
+            var G16A = document.getElementById("G16A").value;
+            var G16B = document.getElementById("G16B").value;
+            var G16C = document.getElementById("G16C").value;
+            var G16D = document.getElementById("G16D").value;
+            var Q17 = document.getElementById("Q17").value;
+            var G17A = document.getElementById("G17A").value;
+            var G17B = document.getElementById("G17B").value;
+            var G17C = document.getElementById("G17C").value;
+            var G17D = document.getElementById("G17D").value;
+            var Q18 = document.getElementById("Q18").value;
+            var G18A = document.getElementById("G18A").value;
+            var G18B = document.getElementById("G18B").value;
+            var G18C = document.getElementById("G18C").value;
+            var G18D = document.getElementById("G18D").value;
+            var Q19 = document.getElementById("Q19").value;
+            var G19A = document.getElementById("G19A").value;
+            var G19B = document.getElementById("G19B").value;
+            var G19C = document.getElementById("G19C").value;
+            var G19D = document.getElementById("G19D").value;
+            var Q20 = document.getElementById("Q20").value;
+            var G20A = document.getElementById("G20A").value;
+            var G20B = document.getElementById("G20B").value;
+            var G20C = document.getElementById("G20C").value;
+            var G20D = document.getElementById("G20D").value;
+            var Q21 = document.getElementById("Q21").value;
+            var G21A = document.getElementById("G21A").value;
+            var G21B = document.getElementById("G21B").value;
+            var G21C = document.getElementById("G21C").value;
+            var G21D = document.getElementById("G21D").value;
+            var Q22 = document.getElementById("Q22").value;
+            var G22A = document.getElementById("G22A").value;
+            var G22B = document.getElementById("G22B").value;
+            var G22C = document.getElementById("G22C").value;
+            var G22D = document.getElementById("G22D").value;
+            var Q23 = document.getElementById("Q23").value;
+            var G23A = document.getElementById("G23A").value;
+            var G23B = document.getElementById("G23B").value;
+            var G23C = document.getElementById("G23C").value;
+            var G23D = document.getElementById("G23D").value;
+            var Q24 = document.getElementById("Q24").value;
+            var G24A = document.getElementById("G24A").value;
+            var G24B = document.getElementById("G24B").value;
+            var G24C = document.getElementById("G24C").value;
+            var G24D = document.getElementById("G24D").value;
+            var Q25 = document.getElementById("Q25").value;
+            var G25A = document.getElementById("G25A").value;
+            var G25B = document.getElementById("G25B").value;
+            var G25C = document.getElementById("G25C").value;
+            var G25D = document.getElementById("G25D").value;
+            var Q26 = document.getElementById("Q26").value;
+            var G26A = document.getElementById("G26A").value;
+            var G26B = document.getElementById("G26B").value;
+            var G26C = document.getElementById("G26C").value;
+            var G26D = document.getElementById("G26D").value;
+            var Q27 = document.getElementById("Q27").value;
+            var G27A = document.getElementById("G27A").value;
+            var G27B = document.getElementById("G27B").value;
+            var G27C = document.getElementById("G27C").value;
+            var G27D = document.getElementById("G27D").value;
+            var Q28 = document.getElementById("Q28").value;
+            var G28A = document.getElementById("G28A").value;
+            var G28B = document.getElementById("G28B").value;
+            var G28C = document.getElementById("G28C").value;
+            var G28D = document.getElementById("G28D").value;
+            var Q29 = document.getElementById("Q29").value;
+            var G29A = document.getElementById("G29A").value;
+            var G29B = document.getElementById("G29B").value;
+            var G29C = document.getElementById("G29C").value;
+            var G29D = document.getElementById("G29D").value;
+            var Q30 = document.getElementById("Q30").value;
+            var G30A = document.getElementById("G30A").value;
+            var G30B = document.getElementById("G30B").value;
+            var G30C = document.getElementById("G30C").value;
+            var G30D = document.getElementById("G30D").value;
+            var Q31 = document.getElementById("Q31").value;
+            var G31A = document.getElementById("G31A").value;
+            var G31B = document.getElementById("G31B").value;
+            var G31C = document.getElementById("G31C").value;
+            var G31D = document.getElementById("G31D").value;
+            var Q32 = document.getElementById("Q32").value;
+            var G32A = document.getElementById("G32A").value;
+            var G32B = document.getElementById("G32B").value;
+            var G32C = document.getElementById("G32C").value;
+            var G32D = document.getElementById("G32D").value;
+            var Q33 = document.getElementById("Q33").value;
+            var G33A = document.getElementById("G33A").value;
+            var G33B = document.getElementById("G33B").value;
+            var G33C = document.getElementById("G33C").value;
+            var G33D = document.getElementById("G33D").value;
+            var Q34 = document.getElementById("Q34").value;
+            var G34A = document.getElementById("G34A").value;
+            var G34B = document.getElementById("G34B").value;
+            var G34C = document.getElementById("G34C").value;
+            var G34D = document.getElementById("G34D").value;
+            var Q35 = document.getElementById("Q35").value;
+            var G35A = document.getElementById("G35A").value;
+            var G35B = document.getElementById("G35B").value;
+            var G35C = document.getElementById("G35C").value;
+            var G35D = document.getElementById("G35D").value;
+            var Q36 = document.getElementById("Q36").value;
+            var G36A = document.getElementById("G36A").value;
+            var G36B = document.getElementById("G36B").value;
+            var G36C = document.getElementById("G36C").value;
+            var G36D = document.getElementById("G36D").value;
+            var Q37 = document.getElementById("Q37").value;
+            var G37A = document.getElementById("G37A").value;
+            var G37B = document.getElementById("G37B").value;
+            var G37C = document.getElementById("G37C").value;
+            var G37D = document.getElementById("G37D").value;
+            var Q38 = document.getElementById("Q38").value;
+            var G38A = document.getElementById("G38A").value;
+            var G38B = document.getElementById("G38B").value;
+            var G38C = document.getElementById("G38C").value;
+            var G38D = document.getElementById("G38D").value;
+            var Q39 = document.getElementById("Q39").value;
+            var G39A = document.getElementById("G39A").value;
+            var G39B = document.getElementById("G39B").value;
+            var G39C = document.getElementById("G39C").value;
+            var G39D = document.getElementById("G39D").value;
+            var Q40 = document.getElementById("Q40").value;
+            var G40A = document.getElementById("G40A").value;
+            var G40B = document.getElementById("G40B").value;
+            var G40C = document.getElementById("G40C").value;
+            var G40D = document.getElementById("G40D").value;
+
+            localStorage.setItem('QOne', Q1);
+            localStorage.setItem('GOneA', G1A);
+            localStorage.setItem('GOneB', G1B);
+            localStorage.setItem('GOneC', G1C);
+            localStorage.setItem('GOneD', G1D);
+            localStorage.setItem('QTwo', Q2);
+            localStorage.setItem('GTwoA', G2A);
+            localStorage.setItem('GTwoB', G2B);
+            localStorage.setItem('GTwoC', G2C);
+            localStorage.setItem('GTwoD', G2D);
+            localStorage.setItem('QThree', Q3);
+            localStorage.setItem('GThreeA', G3A);
+            localStorage.setItem('GThreeB', G3B);
+            localStorage.setItem('GThreeC', G3C);
+            localStorage.setItem('GThreeD', G3D);
+            localStorage.setItem('QFour', Q4);
+            localStorage.setItem('GFourA', G4A);
+            localStorage.setItem('GFourB', G4B);
+            localStorage.setItem('GFourC', G4C);
+            localStorage.setItem('GFourD', G4D);
+            localStorage.setItem('QFive', Q5);
+            localStorage.setItem('GFiveA', G5A);
+            localStorage.setItem('GFiveB', G5B);
+            localStorage.setItem('GFiveC', G5C);
+            localStorage.setItem('GFiveD', G5D);
+            localStorage.setItem('QSix', Q6);
+            localStorage.setItem('GSixA', G6A);
+            localStorage.setItem('GSixB', G6B);
+            localStorage.setItem('GSixC', G6C);
+            localStorage.setItem('GSixD', G6D);
+            localStorage.setItem('QSeven', Q7);
+            localStorage.setItem('GSevenA', G7A);
+            localStorage.setItem('GSevenB', G7B);
+            localStorage.setItem('GSevenC', G7C);
+            localStorage.setItem('GSevenD', G7D);
+            localStorage.setItem('QEight', Q8);
+            localStorage.setItem('GEightA', G8A);
+            localStorage.setItem('GEightB', G8B);
+            localStorage.setItem('GEightC', G8C);
+            localStorage.setItem('GEightD', G8D);
+            localStorage.setItem('QNine', Q9);
+            localStorage.setItem('GNineA', G9A);
+            localStorage.setItem('GNineB', G9B);
+            localStorage.setItem('GNineC', G9C);
+            localStorage.setItem('GNineD', G9D);
+            localStorage.setItem('QTen', Q10);
+            localStorage.setItem('GTenA', G10A);
+            localStorage.setItem('GTenB', G10B);
+            localStorage.setItem('GTenC', G10C);
+            localStorage.setItem('GTenD', G10D);
+            localStorage.setItem('QEleven', Q11);
+            localStorage.setItem('GElevenA', G11A);
+            localStorage.setItem('GElevenB', G11B);
+            localStorage.setItem('GElevenC', G11C);
+            localStorage.setItem('GElevenD', G11D);
+            localStorage.setItem('QTwelve', Q12);
+            localStorage.setItem('GTwelveA', G12A);
+            localStorage.setItem('GTwelveB', G12B);
+            localStorage.setItem('GTwelveC', G12C);
+            localStorage.setItem('GTwelveD', G12D);
+            localStorage.setItem('QThirteen', Q13);
+            localStorage.setItem('GThirteenA', G13A);
+            localStorage.setItem('GThirteenB', G13B);
+            localStorage.setItem('GThirteenC', G13C);
+            localStorage.setItem('GThirteenD', G13D);
+            localStorage.setItem('QFourteen', Q14);
+            localStorage.setItem('GFourteenA', G14A);
+            localStorage.setItem('GFourteenB', G14B);
+            localStorage.setItem('GFourteenC', G14C);
+            localStorage.setItem('GFourteenD', G14D);
+            localStorage.setItem('QFifteen', Q15);
+            localStorage.setItem('GFifteenA', G15A);
+            localStorage.setItem('GFifteenB', G15B);
+            localStorage.setItem('GFifteenC', G15C);
+            localStorage.setItem('GFifteenD', G15D);
+            localStorage.setItem('QSixteen', Q16);
+            localStorage.setItem('GSixteenA', G16A);
+            localStorage.setItem('GSixteenB', G16B);
+            localStorage.setItem('GSixteenC', G16C);
+            localStorage.setItem('GSixteenD', G16D);
+            localStorage.setItem('QSeventeen', Q17);
+            localStorage.setItem('GSeventeenA', G17A);
+            localStorage.setItem('GSeventeenB', G17B);
+            localStorage.setItem('GSeventeenC', G17C);
+            localStorage.setItem('GSeventeenD', G17D);
+            localStorage.setItem('QEighteen', Q18);
+            localStorage.setItem('GEighteenA', G18A);
+            localStorage.setItem('GEighteenB', G18B);
+            localStorage.setItem('GEighteenC', G18C);
+            localStorage.setItem('GEighteenD', G18D);
+            localStorage.setItem('QNineteen', Q19);
+            localStorage.setItem('GNineteenA', G19A);
+            localStorage.setItem('GNineteenB', G19B);
+            localStorage.setItem('GNineteenC', G19C);
+            localStorage.setItem('GNineteenD', G19D);
+            localStorage.setItem('QTwenty', Q20);
+            localStorage.setItem('GTwentyA', G20A);
+            localStorage.setItem('GTwentyB', G20B);
+            localStorage.setItem('GTwentyC', G20C);
+            localStorage.setItem('GTwentyD', G20D);
+            localStorage.setItem('QTwentyone', Q21);
+            localStorage.setItem('GTwentyoneA', G21A);
+            localStorage.setItem('GTwentyoneB', G21B);
+            localStorage.setItem('GTwentyoneC', G21C);
+            localStorage.setItem('GTwentyoneD', G21D);
+            localStorage.setItem('QTwentytwo', Q22);
+            localStorage.setItem('GTwentytwoA', G22A);
+            localStorage.setItem('GTwentytwoB', G22B);
+            localStorage.setItem('GTwentytwoC', G22C);
+            localStorage.setItem('GTwentytwoD', G22D);
+            localStorage.setItem('QTwentythree', Q23);
+            localStorage.setItem('GTwentythreeA', G23A);
+            localStorage.setItem('GTwentythreeB', G23B);
+            localStorage.setItem('GTwentythreeC', G23C);
+            localStorage.setItem('GTwentythreeD', G23D);
+            localStorage.setItem('QTwentyfour', Q24);
+            localStorage.setItem('GTwentyfourA', G24A);
+            localStorage.setItem('GTwentyfourB', G24B);
+            localStorage.setItem('GTwentyfourC', G24C);
+            localStorage.setItem('GTwentyfourD', G24D);
+            localStorage.setItem('QTwentyfive', Q25);
+            localStorage.setItem('GTwentyfiveA', G25A);
+            localStorage.setItem('GTwentyfiveB', G25B);
+            localStorage.setItem('GTwentyfiveC', G25C);
+            localStorage.setItem('GTwentyfiveD', G25D);
+            localStorage.setItem('QTwentysix', Q26);
+            localStorage.setItem('GTwentysixA', G26A);
+            localStorage.setItem('GTwentysixB', G26B);
+            localStorage.setItem('GTwentysixC', G26C);
+            localStorage.setItem('GTwentysixD', G26D);
+            localStorage.setItem('QTwentyseven', Q27);
+            localStorage.setItem('GTwentysevenA', G27A);
+            localStorage.setItem('GTwentysevenB', G27B);
+            localStorage.setItem('GTwentysevenC', G27C);
+            localStorage.setItem('GTwentysevenD', G27D);
+            localStorage.setItem('QTwentyeight', Q28);
+            localStorage.setItem('GTwentyeightA', G28A);
+            localStorage.setItem('GTwentyeightB', G28B);
+            localStorage.setItem('GTwentyeightC', G28C);
+            localStorage.setItem('GTwentyeightD', G28D);
+            localStorage.setItem('QTwentynine', Q29);
+            localStorage.setItem('GTwentynineA', G29A);
+            localStorage.setItem('GTwentynineB', G29B);
+            localStorage.setItem('GTwentynineC', G29C);
+            localStorage.setItem('GTwentynineD', G29D);
+            localStorage.setItem('QThirty', Q30);
+            localStorage.setItem('GThirtyA', G30A);
+            localStorage.setItem('GThirtyB', G30B);
+            localStorage.setItem('GThirtyC', G30C);
+            localStorage.setItem('GThirtyD', G30D);
+            localStorage.setItem('QThirtyone', Q31);
+            localStorage.setItem('GThirtyoneA', G31A);
+            localStorage.setItem('GThirtyoneB', G31B);
+            localStorage.setItem('GThirtyoneC', G31C);
+            localStorage.setItem('GThirtyoneD', G31D);
+            localStorage.setItem('QThirtytwo', Q32);
+            localStorage.setItem('GThirtytwoA', G32A);
+            localStorage.setItem('GThirtytwoB', G32B);
+            localStorage.setItem('GThirtytwoC', G32C);
+            localStorage.setItem('GThirtytwoD', G32D);
+            localStorage.setItem('QThirtythree', Q33);
+            localStorage.setItem('GThirtythreeA', G33A);
+            localStorage.setItem('GThirtythreeB', G33B);
+            localStorage.setItem('GThirtythreeC', G33C);
+            localStorage.setItem('GThirtythreeD', G33D);
+            localStorage.setItem('QThirtyfour', Q34);
+            localStorage.setItem('GThirtyfourA', G34A);
+            localStorage.setItem('GThirtyfourB', G34B);
+            localStorage.setItem('GThirtyfourC', G34C);
+            localStorage.setItem('GThirtyfourD', G34D);
+            localStorage.setItem('QThirtyfive', Q35);
+            localStorage.setItem('GThirtyfiveA', G35A);
+            localStorage.setItem('GThirtyfiveB', G35B);
+            localStorage.setItem('GThirtyfiveC', G35C);
+            localStorage.setItem('GThirtyfiveD', G35D);
+            localStorage.setItem('QThirtysix', Q36);
+            localStorage.setItem('GThirtysixA', G36A);
+            localStorage.setItem('GThirtysixB', G36B);
+            localStorage.setItem('GThirtysixC', G36C);
+            localStorage.setItem('GThirtysixD', G36D);
+            localStorage.setItem('QThirtyseven', Q37);
+            localStorage.setItem('GThirtysevenA', G37A);
+            localStorage.setItem('GThirtysevenB', G37B);
+            localStorage.setItem('GThirtysevenC', G37C);
+            localStorage.setItem('GThirtysevenD', G37D);
+            localStorage.setItem('QThirtyeight', Q38);
+            localStorage.setItem('GThirtyeightA', G38A);
+            localStorage.setItem('GThirtyeightB', G38B);
+            localStorage.setItem('GThirtyeightC', G38C);
+            localStorage.setItem('GThirtyeightD', G38D);
+            localStorage.setItem('QThirtynine', Q39);
+            localStorage.setItem('GThirtynineA', G39A);
+            localStorage.setItem('GThirtynineB', G39B);
+            localStorage.setItem('GThirtynineC', G39C);
+            localStorage.setItem('GThirtynineD', G39D);
+            localStorage.setItem('QForty', Q40);
+            localStorage.setItem('GFortyA', G40A);
+            localStorage.setItem('GFortyB', G40B);
+            localStorage.setItem('GFortyC', G40C);
+            localStorage.setItem('GFortyD', G40D);
+            
+            alert('Your question has been loaded in the archive');
+            window.location.href ="bbt.html";
+        }
+    </script>
+</body>
+</html>
